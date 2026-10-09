@@ -1,22 +1,39 @@
-## Development
+# AGENTS.md
 
-When starting the dev server, use background mode:
+## Project
 
-```
-astro dev --background
-```
+Static website built with Astro. Follow Astro conventions for routing and component structure:
 
-Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
+- Components: `src/components`
+- Pages: `src/pages`
+- Layouts: `src/layouts`
+
+Put styles in a separate CSS file in the same directory as the page or component that uses it.
+
+## Commands
+
+- `npm install` – install dependencies
+- `npm run dev` – local dev server
+- `npm run build` – production build (output in `dist/`)
+- `npm run lint` – ESLint
+- `npm run format` – Prettier
+- `npm run check` – Astro check
+
+## Code style
+
+- ESLint and Prettier enforce style. Config lives in `eslint.config.js` and `.prettierrc`. Don't override or disable rules without asking.
+- Path aliases are defined in `tsconfig.json`. Use them instead of long relative imports.
+- Before finishing any task, run lint and format, and make sure `npm run build` passes.
+
+## Git and deployment
+
+- Work on a feature branch and open a PR. Never commit directly to `main`.
+- Merging to `main` triggers a production deploy on Netlify. Each PR also gets a Netlify deploy preview.
 
 ## Documentation
 
-Full documentation: https://docs.astro.build
+Astro docs: https://docs.astro.build
 
-Consult these guides before working on related tasks:
-
-- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
-- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
-- [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/)
-- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
-- [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
-- [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+- [Routing](https://docs.astro.build/en/guides/routing/)
+- [Astro components](https://docs.astro.build/en/basics/astro-components/)
+- [Styling](https://docs.astro.build/en/guides/styling/)
