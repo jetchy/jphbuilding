@@ -25,10 +25,7 @@ const projectTypes = [
 ---
 
 <div class="contact-form technical-corner" id={id}>
-  <div class="contact-form__bar">
-    <span class="contact-form__badge">Fast Response</span>
-  </div>
-
+  <span class="contact-form__badge">Fast Response</span>
   <div class="contact-form__body">
     <div>
       <h2 class="contact-form__title">Request a Free Consultation</h2>
@@ -38,15 +35,6 @@ const projectTypes = [
         they are being quoted for.
       </p>
     </div>
-
-    <Alert variant="compact">
-      <PhoneCallIcon slot="icon" />
-      Or call directly:
-      <a class="contact-form__phone-link" href={contact.phoneHref}>
-        {contact.phoneDisplay}
-      </a>
-      <span class="contact-form__phone-name">({contact.contactName})</span>
-    </Alert>
 
     <form class="contact-form__form">
       <div class="contact-form__field">
@@ -138,6 +126,15 @@ const projectTypes = [
         Send Free Enquiry
         <ArrowRightIcon />
       </button>
+
+    <Alert variant="compact">
+      <PhoneCallIcon slot="icon" />
+      Or call directly:
+      <a class="contact-form__phone-link" href={contact.phoneHref}>
+        {contact.phoneDisplay}
+      </a>
+      <span class="contact-form__phone-name">({contact.contactName})</span>
+    </Alert>
     </form>
   </div>
 </div>

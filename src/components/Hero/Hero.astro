@@ -7,6 +7,7 @@ import FileTextIcon from "$components/Icons/FileTextIcon.astro";
 import InfoIcon from "$components/Icons/InfoIcon.astro";
 import ShieldCheckIcon from "$components/Icons/ShieldCheckIcon.astro";
 import "$components/Hero/Hero.css";
+import { credentials } from "$data/site";
 ---
 
 <section class="hero blueprint-grid" id="about">
@@ -38,7 +39,7 @@ import "$components/Hero/Hero.css";
         <Lozenges title="100% Guaranteed" text="All work fully insured">
           <ShieldCheckIcon slot="icon" />
         </Lozenges>
-        <Lozenges title="30+ Years Local" text="Jason Heseltine's lead">
+        <Lozenges title="30+ Years Local" text={credentials.area}>
           <DraftingCompassIcon slot="icon" />
         </Lozenges>
         <Lozenges title="Direct Quotes" text="Transparent & clear">

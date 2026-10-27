@@ -6,7 +6,7 @@ export const contact = {
 };
 
 export const credentials = {
-  area: "Cheltenham & Throughout Gloucestershire",
+  area: "Cheltenham & Gloucestershire",
   experience: "Established Local Builder • Over 30 Years Experience",
 };
 

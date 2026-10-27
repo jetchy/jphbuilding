@@ -2,6 +2,7 @@
   border: var(--border-blueprint);
   background-color: var(--color-surface);
   box-shadow: var(--shadow-lg);
+  position: relative;
 }
 
 /* Top bar with the "Fast Response" badge */
@@ -23,6 +24,9 @@
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
+  position: absolute;
+  top: -10px;
+  right: 10px;
 }
 
 .contact-form__body {
