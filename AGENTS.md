@@ -36,7 +36,7 @@ The site is currently one landing page (`src/pages/index.astro`) built from sect
 - Shared utilities live in `src/styles/global.css`: `.container`, `.blueprint-grid` (grid-paper background), `.technical-corner` (drafting corner brackets on blueprint cards) and `.visually-hidden`.
 - Write CSS mobile first: base styles target small screens, then add `min-width` media queries.
 
-Put styles in a separate CSS file in the same directory as the page or component that uses it.
+Put styles in a separate CSS file in the same directory as the page or component that uses it, and import it with its `$` alias (see Code style).
 
 ## Commands
 
@@ -54,7 +54,7 @@ Put styles in a separate CSS file in the same directory as the page or component
 
   | Alias           | Resolves to         |
   | --------------- | ------------------- |
-    | `$components/*` | `src/components/*`  |
+  | `$components/*` | `src/components/*`  |
   | `$data/*`       | `src/data/*`        |
   | `$images/*`     | `src/images/*`      |
   | `$layouts/*`    | `src/layouts/*`     |
@@ -67,7 +67,16 @@ Put styles in a separate CSS file in the same directory as the page or component
   import { navItems } from "$data/site";
   ```
 
-  The one exception is a file in the same folder, such as a component's own stylesheet (`import "./SiteHeader.css";`).
+  **This includes CSS.** Import a component's own stylesheet through its alias, even though it sits in the same folder. The same goes for CSS `@import` inside stylesheets:
+
+  ```astro
+  import "$components/SiteHeader/SiteHeader.css";   // ✅
+  import "./SiteHeader.css";                        // ❌
+  ```
+
+  ```css
+  @import "$styles/tokens.css"; /* ✅ */
+  ```
 
   If you add a new top-level folder under `src/`, add a matching `$` alias to `tsconfig.json` and to this table.
 - Before finishing any task, run lint and format, and make sure `npm run build` passes.
