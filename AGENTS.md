@@ -76,7 +76,7 @@ Put styles in a separate CSS file in the same directory as the page or component
   import { navItems } from "$data/site";
   ```
 
-  **This includes CSS.** Import a component's own stylesheet through its alias, even though it sits in the same folder. The same goes for CSS `@import` inside stylesheets:
+  **No `./` or `../` imports at all, even for files in the same folder.** That includes sibling components (`$layouts/BaseLayout.astro`, `$components/Icons/Icon.astro`) and CSS. Import a component's own stylesheet through its alias too. The same goes for CSS `@import` inside stylesheets:
 
   ```astro
   import "$components/SiteHeader/SiteHeader.css";   // ✅
