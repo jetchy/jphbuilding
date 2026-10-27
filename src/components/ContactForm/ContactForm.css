@@ -50,6 +50,7 @@
   font-family: var(--font-mono);
   font-weight: var(--font-weight-bold);
   text-decoration: none;
+  margin-right: var(--space-1);
 }
 
 .contact-form__phone-link:hover {

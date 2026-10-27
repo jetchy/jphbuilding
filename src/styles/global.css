@@ -105,37 +105,6 @@ button {
   background-size: var(--grid-size) var(--grid-size);
 }
 
-/* Drafting corner brackets (top-left, bottom-right) on blueprint cards */
-.technical-corner {
-  position: relative;
-}
-
-.technical-corner::before,
-.technical-corner::after {
-  content: "";
-  position: absolute;
-  width: var(--corner-size);
-  height: var(--corner-size);
-  border-color: var(--color-primary);
-  border-style: solid;
-  border-width: 0;
-  pointer-events: none;
-}
-
-.technical-corner::before {
-  top: calc(var(--border-width-blueprint) * -1);
-  left: calc(var(--border-width-blueprint) * -1);
-  border-top-width: var(--border-width-blueprint);
-  border-left-width: var(--border-width-blueprint);
-}
-
-.technical-corner::after {
-  right: calc(var(--border-width-blueprint) * -1);
-  bottom: calc(var(--border-width-blueprint) * -1);
-  border-right-width: var(--border-width-blueprint);
-  border-bottom-width: var(--border-width-blueprint);
-}
-
 .visually-hidden {
   position: absolute;
   width: 1px;

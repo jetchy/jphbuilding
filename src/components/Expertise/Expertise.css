@@ -1,6 +1,7 @@
 .expertise {
   padding-block: var(--section-padding-block);
   border-bottom: var(--border-blueprint);
+  background-color: var(--color-surface);
 }
 
 .expertise__header {

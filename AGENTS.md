@@ -12,7 +12,12 @@ Static website built with Astro. Follow Astro conventions for routing and compon
 
 ### Single-page site
 
-The site is currently one landing page (`src/pages/index.astro`) built from section components. Navigation links point to section anchors (`#about`, `#services`, `#expertise`, `#testimonials`, `#consultation`), not to separate pages. When you add a section, give it the matching `id` and add it to `navItems` in `src/data/site.ts`.
+The site is currently one landing page (`src/pages/index.astro`) built from section components. Navigation links point to section anchors (`#about`, `#expertise`, `#testimonials`, `#consultation`), not to separate pages. When you add a section, give it the matching `id` and add it to `navItems` in `src/data/site.ts`.
+
+- **Nav numbering:** the `01/`, `02/` … indexes in `navItems` must stay sequential. Renumber them whenever an item is added, removed or restored.
+- **Parked content:** these are deliberately hidden, not forgotten. Don't restore them unless asked.
+  - The "Why JPH" and "Gallery" nav and footer links are commented out in `src/data/site.ts` until those sections are written.
+  - The `Craftsmanship` section (with `CraftsmanshipCards`) is built but not used on the page. Re-add `<Craftsmanship />` after `<Hero />` in `index.astro` to bring it back. Note that it carries `id="services"`.
 
 ### Component structure and naming
 
