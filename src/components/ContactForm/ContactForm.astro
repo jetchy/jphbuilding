@@ -33,8 +33,9 @@ const projectTypes = [
     <div>
       <h2 class="contact-form__title">Request a Free Consultation</h2>
       <p class="contact-form__intro">
-        Tell Jason about your plans. Receive clear timelines, architectural
-        advice, and a detailed estimate.
+        All quotations are given FREE without obligation. Our aim is to ensure
+        that all quotes are fully transparent so our customers know exactly what
+        they are being quoted for.
       </p>
     </div>
 
@@ -42,7 +43,7 @@ const projectTypes = [
       <PhoneCallIcon slot="icon" />
       Or call directly:
       <a class="contact-form__phone-link" href={contact.phoneHref}>
-        {""}{contact.phoneDisplay}
+        {contact.phoneDisplay}
       </a>
       <span class="contact-form__phone-name">({contact.contactName})</span>
     </Alert>

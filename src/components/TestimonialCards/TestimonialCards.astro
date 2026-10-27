@@ -4,10 +4,11 @@ import "$components/TestimonialCards/TestimonialCards.css";
 interface Props {
   quote: string;
   name: string;
-  location: string;
+  /* Location and/or project, shown under the name. */
+  detail: string;
 }
 
-const { quote, name, location } = Astro.props;
+const { quote, name, detail } = Astro.props;
 ---
 
 <figure class="testimonial-card technical-corner">
@@ -17,6 +18,6 @@ const { quote, name, location } = Astro.props;
   </blockquote>
   <figcaption class="testimonial-card__author">
     <span class="testimonial-card__name">{name}</span>
-    <span class="testimonial-card__location">{location}</span>
+    <span class="testimonial-card__detail">{detail}</span>
   </figcaption>
 </figure>

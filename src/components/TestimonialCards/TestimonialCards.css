@@ -49,15 +49,9 @@
   letter-spacing: var(--tracking-tight);
 }
 
-.testimonial-card__location {
+.testimonial-card__detail {
   color: var(--color-text-meta-accent);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   text-transform: uppercase;
-}
-
-@media (min-width: 640px) {
-  .testimonial-card__text {
-    font-size: var(--text-lg);
-  }
 }

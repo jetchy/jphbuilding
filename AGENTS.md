@@ -27,7 +27,7 @@ The site is currently one landing page (`src/pages/index.astro`) built from sect
   | Component            | What it is                                                        |
   | -------------------- | ----------------------------------------------------------------- |
   | `Lozenges`           | Small guarantee badge in the hero (icon, mono title, short text)   |
-  | `Alert`              | Blue-wash notice: `variant="banner"` (hero) or `"compact"` (form)   |
+  | `Alert`              | Blue-wash notice: `variant="banner"` (hero) or `"compact"` (form phone line) |
   | `ContactForm`        | Consultation enquiry form (anchor `#consultation`)                  |
   | `CraftsmanshipCards` | Photo card with badge, title, text and arrow link                   |
   | `ExpertiseCards`     | Trade card with icon box, title and text                            |
@@ -38,6 +38,10 @@ The site is currently one landing page (`src/pages/index.astro`) built from sect
 - Name new components after the part they represent, in PascalCase, and use a matching kebab-case BEM block for their CSS classes (`TestimonialCards` → `.testimonial-card`, `.testimonial-card__name`).
 - Component CSS is imported in frontmatter, so it is global, not scoped. Always prefix class names with the component's block name to avoid collisions.
 - Pass icons into components through a named `icon` slot (`<ShieldCheckIcon slot="icon" />`).
+- **Testimonials** live in `src/data/testimonials.ts`.
+  - They are verbatim excerpts from the current live site (jphbuilding.co.uk/testimonials/). Never reword, "tidy up" or invent a testimonial or client name.
+  - Mark any skipped text with "…".
+  - The `Testimonials` section shows them as a CSS marquee. Only entries marked `featured` appear there (5 at most, around 27 words each); the rest are kept for a future testimonials page. The list is rendered three times and slides left by one copy, and hovering a card pauses it. With reduced motion, the duplicate copy is hidden and the row becomes a manual horizontal scroll instead.
 - Shared utilities live in `src/styles/global.css`: `.container`, `.blueprint-grid` (grid-paper background), `.technical-corner` (drafting corner brackets on blueprint cards) and `.visually-hidden`.
 - Write CSS mobile first: base styles target small screens, then add `min-width` media queries.
 

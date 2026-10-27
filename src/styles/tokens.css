@@ -244,6 +244,10 @@
    * ------------------------------------------------------------------ */
   --duration-fast: 200ms;
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  /* Testimonials marquee: time for one full loop of the cards */
+  --marquee-duration: 40s;
+  --marquee-card-width: min(85vw, 24rem);
+  --marquee-fade-width: var(--space-16);
   --transition-colors:
     color var(--duration-fast) var(--ease-standard),
     background-color var(--duration-fast) var(--ease-standard),

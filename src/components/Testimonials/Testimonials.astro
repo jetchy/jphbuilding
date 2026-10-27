@@ -1,8 +1,7 @@
 ---
-import { enquireHref } from "$data/site";
+import { featuredTestimonials } from "$data/testimonials";
 import SectionHeading from "$components/SectionHeading/SectionHeading.astro";
 import TestimonialCards from "$components/TestimonialCards/TestimonialCards.astro";
-import ArrowRightIcon from "$components/Icons/ArrowRightIcon.astro";
 import "$components/Testimonials/Testimonials.css";
 ---
 
@@ -15,25 +14,25 @@ import "$components/Testimonials/Testimonials.css";
       Read first-hand feedback from homeowners who put their largest investment
       into the hands of Jason Heseltine and JPH Building.
     </SectionHeading>
+  </div>
 
-    <div class="testimonials__grid">
-      <TestimonialCards
-        quote="His team were such pleasant guys and as my intention was for the building to look like an established coach house, it has been a great success. Couldn't recommend them higher."
-        name="Valerie du Monceau"
-        location="Cheltenham Homeowner"
-      />
-      <TestimonialCards
-        quote="Jason carried out a major structural extension on our Victorian home. Always on site early, honest costings, zero mess left behind. Truly professional builder."
-        name="Richard & Claire Evans"
-        location="Montpellier, Cheltenham"
-      />
-    </div>
-
-    <div class="testimonials__action">
-      <a class="testimonials__link" href={enquireHref}>
-        Read all customer testimonials
-        <ArrowRightIcon />
-      </a>
+  <!--
+    Marquee: the list is rendered three times (so short lists still fill wide
+    screens) and the track slides left by exactly one copy, so the loop is
+    seamless. The copies are hidden from assistive tech. Hovering a card (or
+    focusing inside) pauses the motion.
+  -->
+  <div class="testimonials__viewport">
+    <div class="testimonials__track">
+      {
+        [false, true, true].map((isDuplicate) => (
+          <div class="testimonials__group" aria-hidden={isDuplicate ? "true" : undefined}>
+            {featuredTestimonials.map((testimonial) => (
+              <TestimonialCards {...testimonial} />
+            ))}
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>
