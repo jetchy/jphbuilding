@@ -1,0 +1,25 @@
+---
+import "$components/SectionHeading/SectionHeading.css";
+
+interface Props {
+  overline: string;
+  title: string;
+  /* Centred headings get the orange rule and an optional intro slot. */
+  align?: "center" | "start";
+}
+
+const { overline, title, align = "center" } = Astro.props;
+---
+
+<div class:list={["section-heading", `section-heading--${align}`]}>
+  <span class="section-heading__overline">{overline}</span>
+  <h2 class="section-heading__title">{title}</h2>
+  {align === "center" && <div class="section-heading__rule" aria-hidden="true" />}
+  {
+    Astro.slots.has("default") && (
+      <p class="section-heading__intro">
+        <slot />
+      </p>
+    )
+  }
+</div>

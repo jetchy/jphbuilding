@@ -1,0 +1,43 @@
+---
+import { contact, credentials } from "$data/site";
+import MailIcon from "$components/Icons/MailIcon.astro";
+import MapPinIcon from "$components/Icons/MapPinIcon.astro";
+import PhoneIcon from "$components/Icons/PhoneIcon.astro";
+import ShieldIcon from "$components/Icons/ShieldIcon.astro";
+import "$components/UtilityBar/UtilityBar.css";
+---
+
+<div class="utility-bar">
+  <div class="container utility-bar__inner">
+    <ul class="utility-bar__group">
+      <li class="utility-bar__item">
+        <MapPinIcon class="utility-bar__icon" />
+        {credentials.area}
+      </li>
+      <li class="utility-bar__divider" aria-hidden="true">|</li>
+      <li class="utility-bar__item">
+        <ShieldIcon class="utility-bar__icon" />
+        {credentials.experience}
+      </li>
+    </ul>
+
+    <ul class="utility-bar__group utility-bar__group--contact">
+      <li>
+        <a class="utility-bar__item utility-bar__link" href={`mailto:${contact.email}`}>
+          <MailIcon class="utility-bar__icon" />
+          {contact.email}
+        </a>
+      </li>
+      <li class="utility-bar__divider" aria-hidden="true">|</li>
+      <li>
+        <a
+          class="utility-bar__item utility-bar__link utility-bar__link--phone"
+          href={contact.phoneHref}
+        >
+          <PhoneIcon class="utility-bar__icon utility-bar__icon--accent" />
+          TEL: {contact.phoneDisplay}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

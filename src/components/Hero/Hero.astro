@@ -1,0 +1,65 @@
+---
+import Alert from "$components/Alert/Alert.astro";
+import ContactForm from "$components/ContactForm/ContactForm.astro";
+import Lozenges from "$components/Lozenges/Lozenges.astro";
+import DraftingCompassIcon from "$components/Icons/DraftingCompassIcon.astro";
+import FileTextIcon from "$components/Icons/FileTextIcon.astro";
+import InfoIcon from "$components/Icons/InfoIcon.astro";
+import ShieldCheckIcon from "$components/Icons/ShieldCheckIcon.astro";
+import "$components/Hero/Hero.css";
+import { credentials } from "$data/site";
+---
+
+<section class="hero blueprint-grid" id="about">
+  <div class="hero__ruler" aria-hidden="true"></div>
+
+  <div class="container hero__grid">
+    <div class="hero__content">
+      <p class="hero__tag">
+        <span class="hero__tag-marker" aria-hidden="true"></span>
+        Carpentry • Roofing • General Building
+      </p>
+
+      <!-- Both lines sit in the h1 so "Cheltenham Builder" carries heading weight for SEO. -->
+      <h1 class="hero__headings">
+        <span class="hero__title">JPH Building</span>
+        <span class="hero__subtitle">Your Local Cheltenham Builder</span>
+      </h1>
+
+      <p class="hero__intro">
+        JPH Building is a local Cheltenham builder, run by Jason Heseltine with
+        over 30 years in the trade. We take on everything from house extensions,
+        alterations and conversions to roofing, driveways, kitchens and
+        bathrooms, for homes and businesses across Cheltenham and
+        Gloucestershire. From new builds to general repairs, no job is too big
+        or too small.
+      </p>
+
+      <div class="hero__lozenges">
+        <Lozenges title="100% Guaranteed" text="All work fully insured">
+          <ShieldCheckIcon slot="icon" />
+        </Lozenges>
+        <Lozenges title="30+ Years Local" text={credentials.area}>
+          <DraftingCompassIcon slot="icon" />
+        </Lozenges>
+        <Lozenges title="Direct Quotes" text="Transparent & clear">
+          <FileTextIcon slot="icon" />
+        </Lozenges>
+      </div>
+
+      <Alert>
+        <InfoIcon slot="icon" />
+        <p>
+          Our approach is the same for every customer, irrespective of project
+          size or budget. We work closely with our customers to ensure that our
+          service meets with their requirements and expectations from start to
+          finish every time.
+        </p>
+      </Alert>
+    </div>
+
+    <div class="hero__form">
+      <ContactForm />
+    </div>
+  </div>
+</section>

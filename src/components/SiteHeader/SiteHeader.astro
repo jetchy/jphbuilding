@@ -1,0 +1,94 @@
+---
+import { Image } from "astro:assets";
+import { enquireHref, navItems } from "$data/site";
+import CloseIcon from "$components/Icons/CloseIcon.astro";
+import MenuIcon from "$components/Icons/MenuIcon.astro";
+import logo from "$images/logo.gif";
+import "$components/SiteHeader/SiteHeader.css";
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="/" class="site-header__logo">
+      <Image src={logo} alt="JPH Building Ltd" class="site-header__logo-img" />
+    </a>
+
+    <div class="site-header__actions">
+      <nav class="site-nav" aria-label="Main">
+        <ul class="site-nav__list">
+          {
+            navItems.map((item) => (
+              <li>
+                <a href={item.href} class="site-nav__link">
+                  <span class="site-nav__index">{item.index}/</span>
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <a href={enquireHref} class="site-header__cta">Enquire Now</a>
+
+      <button
+        type="button"
+        class="site-header__menu-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        data-menu-toggle
+      >
+        <span class="visually-hidden">Menu</span>
+        <MenuIcon class="site-header__menu-icon site-header__menu-icon--open" />
+        <CloseIcon class="site-header__menu-icon site-header__menu-icon--close" />
+      </button>
+    </div>
+  </div>
+
+  <nav id="mobile-menu" class="mobile-menu" aria-label="Main" hidden>
+    <ul class="container mobile-menu__list">
+      {
+        navItems.map((item) => (
+          <li>
+            <a href={item.href} class="mobile-menu__link">
+              <span class="site-nav__index">{item.index}/</span>
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
+  const menu = document.getElementById("mobile-menu");
+
+  const setOpen = (open: boolean) => {
+    if (!toggle || !menu) return;
+    toggle.setAttribute("aria-expanded", String(open));
+    menu.hidden = !open;
+  };
+
+  toggle?.addEventListener("click", () => {
+    setOpen(toggle.getAttribute("aria-expanded") !== "true");
+  });
+
+  // Anchor links stay on the page, so close the menu after choosing one.
+  menu?.addEventListener("click", (event) => {
+    if ((event.target as HTMLElement).closest("a")) setOpen(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !menu?.hidden) {
+      setOpen(false);
+      toggle?.focus();
+    }
+  });
+
+  // Close the mobile menu if the viewport grows to the desktop nav.
+  window.matchMedia("(min-width: 48em)").addEventListener("change", (event) => {
+    if (event.matches) setOpen(false);
+  });
+</script>

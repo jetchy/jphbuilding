@@ -1,0 +1,283 @@
+/*
+ * JPH Building design tokens.
+ * Source of truth: DESIGN.md. Do not hard-code these values elsewhere —
+ * reference the custom properties instead.
+ *
+ * Layer 1 (primitives) holds raw values. Layer 2 (semantic) maps them to
+ * roles. Components should use the semantic tokens.
+ */
+
+:root {
+  /* ------------------------------------------------------------------
+   * 1. Primitives — colour
+   * ------------------------------------------------------------------ */
+  --blue-600: #156aa6;
+  --blue-600-a30: rgb(21 106 166 / 0.3);
+  --blue-600-a20: rgb(21 106 166 / 0.2);
+  --blue-600-a15: rgb(21 106 166 / 0.15);
+  --blue-600-a06: rgb(21 106 166 / 0.06);
+  --blue-100-a90: rgb(219 234 254 / 0.9);
+  --blue-50: #eff6ff;
+
+  --orange-600: #ea580c;
+  --orange-700: #c2410c;
+  --orange-vivid: #f25100;
+
+  --navy-975: #07111e;
+  --navy-950: #0a192f;
+  --navy-900: #0b132b;
+
+  --slate-50: #f0f4f8;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+
+  --white: #ffffff;
+  --white-a95: rgb(255 255 255 / 0.95);
+  --white-a90: rgb(255 255 255 / 0.9);
+  --white-a70: rgb(255 255 255 / 0.7);
+  --white-a15: rgb(255 255 255 / 0.15);
+
+  /* ------------------------------------------------------------------
+   * 2. Semantic — colour
+   * ------------------------------------------------------------------ */
+  --color-primary: var(--blue-600);
+  --color-accent: var(--orange-600);
+  --color-accent-hover: var(--orange-700);
+  --color-on-accent: var(--white);
+
+  /* Surfaces */
+  --color-surface: var(--white);
+  --color-surface-dark: var(--navy-950);
+  --color-surface-dark-alt: var(--navy-900);
+  --color-surface-darker: var(--navy-975);
+  --color-surface-wash: var(--slate-50);
+  --color-surface-muted: var(--slate-100);
+  --color-surface-callout: var(--blue-50);
+  --color-surface-tag: var(--blue-100-a90);
+  --color-surface-badge: var(--white-a95);
+
+  /* Text */
+  --color-text-heading: var(--slate-900);
+  --color-text-strong: var(--slate-800);
+  --color-text-subheading: var(--blue-600);
+  --color-text-body: var(--slate-700);
+  --color-text-body-muted: var(--slate-600);
+  --color-text-meta: var(--slate-500);
+  --color-text-meta-accent: var(--blue-600);
+  --color-text-placeholder: var(--slate-400);
+  --color-text-on-dark: var(--white);
+  --color-text-on-dark-muted: var(--slate-300);
+  --color-text-on-dark-subtle: var(--slate-400);
+  --color-quote-mark: var(--blue-600-a20);
+
+  /* Borders */
+  --color-border-blueprint: var(--blue-600);
+  --color-border-subtle: var(--slate-200);
+  --color-border-input: var(--slate-300);
+  --color-border-tint: var(--blue-600-a20);
+  --color-border-tint-strong: var(--blue-600-a30);
+  --color-border-on-dark: var(--white-a15);
+  --color-focus-ring: var(--blue-600-a15);
+
+  /* ------------------------------------------------------------------
+   * 3. Typography
+   * Font files are loaded by Astro's Fonts API (astro.config.mjs), which
+   * defines --font-jakarta and --font-jetbrains.
+   * ------------------------------------------------------------------ */
+  --font-sans:
+    var(--font-jakarta, "Plus Jakarta Sans"), "Inter", system-ui, -apple-system,
+    sans-serif;
+  --font-mono:
+    var(--font-jetbrains, "JetBrains Mono"), ui-monospace, "Courier New",
+    monospace;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Size scale (rem, 16px base) */
+  --text-2xs: 0.625rem; /* 10px — technical annotations */
+  --text-xs: 0.75rem; /* 12px — overlines, metadata */
+  --text-sm: 0.875rem; /* 14px — buttons, small body */
+  --text-base: 1rem; /* 16px — body */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-2xl: 1.5rem; /* 24px */
+  --text-3xl: 1.875rem; /* 30px */
+  --text-4xl: 2.25rem; /* 36px */
+  --text-5xl: 3rem; /* 48px */
+  --text-6xl: 3.75rem; /* 60px */
+
+  /* Role sizes (fluid between mobile and desktop) */
+  --text-h1: clamp(var(--text-4xl), 1.5rem + 3.2vw, var(--text-6xl));
+  --text-hero-subtitle: clamp(var(--text-2xl), 1.2rem + 1.2vw, var(--text-3xl));
+  --text-h2: clamp(var(--text-3xl), 1.5rem + 1.2vw, var(--text-4xl));
+  --text-h3: clamp(var(--text-lg), 1rem + 0.4vw, var(--text-xl));
+  --text-card-title: var(--text-2xl);
+  --text-quote-mark: var(--text-5xl);
+  --text-overline: var(--text-xs);
+  --text-body: var(--text-base);
+  --text-body-sm: var(--text-sm);
+  --text-meta: var(--text-2xs);
+
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+
+  --measure-narrow: 24rem; /* 384px */
+  --measure: 42rem; /* 672px */
+
+  /* ------------------------------------------------------------------
+   * 4. Spacing (4px base)
+   * ------------------------------------------------------------------ */
+  --space-0: 0;
+  --space-0-5: 0.125rem; /* 2px */
+  --space-1: 0.25rem; /* 4px */
+  --space-1-5: 0.375rem; /* 6px */
+  --space-2: 0.5rem; /* 8px */
+  --space-2-5: 0.625rem; /* 10px */
+  --space-3: 0.75rem; /* 12px */
+  --space-3-5: 0.875rem; /* 14px — CTA vertical padding */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem; /* 24px */
+  --space-7: 1.75rem; /* 28px */
+  --space-8: 2rem; /* 32px */
+  --space-9: 2.25rem; /* 36px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem; /* 48px */
+  --space-14: 3.5rem; /* 56px */
+  --space-16: 4rem; /* 64px */
+  --space-20: 5rem; /* 80px */
+  --space-24: 6rem; /* 96px */
+
+  --section-padding-block: var(--space-16);
+  --stack-gap: clamp(var(--space-8), 4vw, var(--space-12));
+
+  /* ------------------------------------------------------------------
+   * 5. Layout
+   * Breakpoints cannot be used in @media via custom properties; they are
+   * listed here as the canonical values to write media queries against.
+   * Written in em (not px or rem) so layouts respond to the user's browser
+   * font-size setting:
+   *   sm: 40em (640px)   md: 48em (768px)   lg: 64em (1024px)   xl: 80em (1280px)
+   * ------------------------------------------------------------------ */
+  --container-max: 80rem; /* 1280px */
+  --container-narrow: 64rem; /* 1024px */
+  --container-gutter: var(--space-4);
+  --container-gutter-sm: var(--space-6);
+  --container-gutter-lg: var(--space-8);
+
+  --header-height: var(--space-20);
+  --logo-height: var(--space-9);
+  --logo-height-footer: var(--space-10);
+  --icon-box-size: var(--space-10);
+  --media-height: 16rem; /* 256px — showcase card photos */
+  --heading-rule-width: var(--space-20);
+  --heading-rule-height: var(--space-1);
+  --marker-size: var(--space-2);
+
+  /* ------------------------------------------------------------------
+   * 6. Geometry — radius, borders, elevation
+   * Corners are strictly square. Never introduce a non-zero radius.
+   * ------------------------------------------------------------------ */
+  --radius: 0;
+
+  --border-width-hairline: 0.0625rem; /* 1px */
+  --border-width-blueprint: 0.125rem; /* 2px */
+  --border-width-heavy: 0.25rem; /* 4px */
+
+  --border-blueprint: var(--border-width-blueprint) solid
+    var(--color-border-blueprint);
+  --border-blueprint-thin: var(--border-width-hairline) solid
+    var(--color-border-blueprint);
+  --border-subtle: var(--border-width-hairline) solid var(--color-border-subtle);
+  --border-input: var(--border-width-hairline) solid var(--color-border-input);
+  --border-input-focus: var(--border-width-hairline) solid var(--color-primary);
+  --border-tint: var(--border-width-hairline) solid var(--color-border-tint);
+  --border-on-dark: var(--border-width-hairline) solid
+    var(--color-border-on-dark);
+
+  /* Technical corner brackets on blueprint cards */
+  --corner-size: var(--space-2);
+
+  --focus-ring: 0 0 0 0.1875rem var(--color-focus-ring);
+  --focus-offset: var(--space-0-5);
+
+  --shadow-none: none;
+  --shadow-sm:
+    0 0.0625rem 0.1875rem 0 rgb(15 23 42 / 0.1),
+    0 0.0625rem 0.125rem -0.0625rem rgb(15 23 42 / 0.1);
+  --shadow-md:
+    0 0.25rem 0.375rem -0.0625rem rgb(15 23 42 / 0.1),
+    0 0.125rem 0.25rem -0.125rem rgb(15 23 42 / 0.1);
+  --shadow-lg:
+    0 1.25rem 1.5625rem -0.3125rem rgb(15 23 42 / 0.1),
+    0 0.5rem 0.625rem -0.375rem rgb(15 23 42 / 0.1);
+
+  /* ------------------------------------------------------------------
+   * 7. Blueprint grid background
+   * ------------------------------------------------------------------ */
+  --grid-size: var(--space-8);
+  --grid-line: var(--blue-600-a06);
+  --ruler-height: var(--space-1-5);
+  --ruler-tick-minor: 0.625rem; /* 10px */
+  --ruler-tick-major: 3.125rem; /* 50px */
+  --ruler-opacity: 0.35;
+  --bg-blueprint-grid:
+    linear-gradient(
+      90deg,
+      var(--grid-line) var(--border-width-hairline),
+      transparent var(--border-width-hairline)
+    ),
+    linear-gradient(
+      var(--grid-line) var(--border-width-hairline),
+      transparent var(--border-width-hairline)
+    );
+
+  /* ------------------------------------------------------------------
+   * 8. Motion
+   * ------------------------------------------------------------------ */
+  --duration-fast: 200ms;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  /* Testimonials marquee: time for one full loop of the cards */
+  --marquee-duration: 40s;
+  --marquee-card-width: min(85vw, 24rem);
+  --marquee-fade-width: var(--space-16);
+  --transition-colors:
+    color var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+
+  /* ------------------------------------------------------------------
+   * 9. Layering
+   * ------------------------------------------------------------------ */
+  --z-base: 0;
+  --z-raised: 1;
+  --z-badge: 10;
+  --z-header: 50;
+  --z-menu: 60;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+  }
+}

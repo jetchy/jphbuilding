@@ -1,0 +1,76 @@
+.testimonials {
+  padding-block: var(--section-padding-block);
+  border-bottom: var(--border-blueprint);
+}
+
+/* Full-width strip; cards fade out at both edges. */
+.testimonials__viewport {
+  overflow: hidden;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black var(--marquee-fade-width),
+    black calc(100% - var(--marquee-fade-width)),
+    transparent
+  );
+}
+
+.testimonials__track {
+  display: flex;
+  width: max-content;
+  /* Room for the card shadows and corner brackets. */
+  padding-block: var(--space-2);
+  animation: testimonials-marquee var(--marquee-duration) linear infinite;
+}
+
+/* Pause while a card is hovered or something inside has focus. */
+.testimonials__track:has(.testimonial-card:hover),
+.testimonials__track:focus-within {
+  animation-play-state: paused;
+}
+
+/* Gap is repeated as trailing padding so every copy is the same width and
+   the one-third loop point lands exactly. */
+.testimonials__group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: var(--space-8);
+  padding-right: var(--space-8);
+}
+
+.testimonials__group > .testimonial-card {
+  flex: 0 0 var(--marquee-card-width);
+}
+
+@keyframes testimonials-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-100% / 3));
+  }
+}
+
+/* No motion: drop the copies and let people scroll the row themselves. */
+@media (prefers-reduced-motion: reduce) {
+  .testimonials__viewport {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    mask-image: none;
+  }
+
+  .testimonials__track {
+    padding-inline: var(--container-gutter);
+    animation: none;
+  }
+
+  .testimonials__group[aria-hidden="true"] {
+    display: none;
+  }
+
+  .testimonials__group > .testimonial-card {
+    scroll-snap-align: start;
+  }
+}

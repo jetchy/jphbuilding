@@ -1,0 +1,24 @@
+---
+import "$components/Alert/Alert.css";
+
+interface Props {
+  /* "banner" is the roomy hero notice; "compact" is the bordered form callout. */
+  variant?: "banner" | "compact";
+  class?: string;
+}
+
+const { variant = "banner", class: className } = Astro.props;
+---
+
+<div class:list={["alert", `alert--${variant}`, className]}>
+  {
+    Astro.slots.has("icon") && (
+      <span class="alert__icon">
+        <slot name="icon" />
+      </span>
+    )
+  }
+  <div class="alert__content">
+    <slot />
+  </div>
+</div>

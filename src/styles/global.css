@@ -1,0 +1,116 @@
+@import "$styles/tokens.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  border-radius: var(--radius);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  /* Keep anchor targets clear of the sticky header. */
+  scroll-padding-top: var(--header-height);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--color-surface);
+  color: var(--color-text-body);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--leading-relaxed);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  color: var(--color-text-heading);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-tight);
+}
+
+h1 {
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: var(--tracking-tight);
+}
+
+h2 {
+  font-size: var(--text-h2);
+}
+
+h3 {
+  font-size: var(--text-h3);
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: var(--border-width-blueprint) solid var(--color-primary);
+  outline-offset: var(--focus-offset);
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-gutter);
+}
+
+@media (min-width: 40em) {
+  .container {
+    padding-inline: var(--container-gutter-sm);
+  }
+}
+
+@media (min-width: 64em) {
+  .container {
+    padding-inline: var(--container-gutter-lg);
+  }
+}
+
+/* Faint drafting-paper grid used behind the hero and trades sections */
+.blueprint-grid {
+  background-color: var(--color-surface-wash);
+  background-image: var(--bg-blueprint-grid);
+  background-size: var(--grid-size) var(--grid-size);
+}
+
+.visually-hidden {
+  position: absolute;
+  /* px is intentional: the standard screen-reader-only technique. */
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

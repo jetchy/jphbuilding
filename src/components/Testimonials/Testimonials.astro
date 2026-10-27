@@ -1,0 +1,38 @@
+---
+import { featuredTestimonials } from "$data/testimonials";
+import SectionHeading from "$components/SectionHeading/SectionHeading.astro";
+import TestimonialCards from "$components/TestimonialCards/TestimonialCards.astro";
+import "$components/Testimonials/Testimonials.css";
+---
+
+<section class="testimonials blueprint-grid" id="testimonials">
+  <div class="container">
+    <SectionHeading
+      overline="Client Endorsements"
+      title="Trusted by Cheltenham Families"
+    >
+      Read first-hand feedback from homeowners who put their largest investment
+      into the hands of Jason Heseltine and JPH Building.
+    </SectionHeading>
+  </div>
+
+  <!--
+    Marquee: the list is rendered three times (so short lists still fill wide
+    screens) and the track slides left by exactly one copy, so the loop is
+    seamless. The copies are hidden from assistive tech. Hovering a card (or
+    focusing inside) pauses the motion.
+  -->
+  <div class="testimonials__viewport">
+    <div class="testimonials__track">
+      {
+        [false, true, true].map((isDuplicate) => (
+          <div class="testimonials__group" aria-hidden={isDuplicate ? "true" : undefined}>
+            {featuredTestimonials.map((testimonial) => (
+              <TestimonialCards {...testimonial} />
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

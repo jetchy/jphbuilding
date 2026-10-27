@@ -1,0 +1,23 @@
+---
+import "$components/TestimonialCards/TestimonialCards.css";
+
+interface Props {
+  quote: string;
+  name: string;
+  /* Location and/or project, shown under the name. */
+  detail: string;
+}
+
+const { quote, name, detail } = Astro.props;
+---
+
+<figure class="testimonial-card technical-corner">
+  <blockquote class="testimonial-card__quote">
+    <span class="testimonial-card__mark" aria-hidden="true">“</span>
+    <p class="testimonial-card__text">{quote}</p>
+  </blockquote>
+  <figcaption class="testimonial-card__author">
+    <span class="testimonial-card__name">{name}</span>
+    <span class="testimonial-card__detail">{detail}</span>
+  </figcaption>
+</figure>

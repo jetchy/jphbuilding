@@ -1,0 +1,55 @@
+---
+import ExpertiseCards from "$components/ExpertiseCards/ExpertiseCards.astro";
+import SectionHeading from "$components/SectionHeading/SectionHeading.astro";
+import BathIcon from "$components/Icons/BathIcon.astro";
+import BrickWallIcon from "$components/Icons/BrickWallIcon.astro";
+import HouseChimneyIcon from "$components/Icons/HouseChimneyIcon.astro";
+import PencilRulerIcon from "$components/Icons/PencilRulerIcon.astro";
+import "$components/Expertise/Expertise.css";
+---
+
+<section class="expertise" id="expertise">
+  <div class="container">
+    <div class="expertise__header">
+      <SectionHeading
+        overline="Scope of Work"
+        title="Expertise Across All Trades"
+        align="start"
+      />
+      <p class="expertise__intro">
+        From single-room kitchen revamps to whole-house structural overhauls,
+        JPH Building handles planning, execution, and handover.
+      </p>
+    </div>
+
+    <div class="expertise__grid">
+      <ExpertiseCards
+        title="Roofing & Leadwork"
+        text="Tiled roofs, slate repairs, flat roof fiberglass systems, lead flashing, chimney rebuilding, and fascia installations."
+      >
+        <HouseChimneyIcon slot="icon" />
+      </ExpertiseCards>
+
+      <ExpertiseCards
+        title="Carpentry & Joinery"
+        text="Bespoke staircases, timber framing, roof trusses, engineered flooring, custom door frames, and architectural finishes."
+      >
+        <PencilRulerIcon slot="icon" />
+      </ExpertiseCards>
+
+      <ExpertiseCards
+        title="Kitchens & Bathrooms"
+        text="Full strip-out and modern installation, luxury tiling, plumbing alterations, smart electricals, and custom cabinetry."
+      >
+        <BathIcon slot="icon" />
+      </ExpertiseCards>
+
+      <ExpertiseCards
+        title="Extensions & Driveways"
+        text="Single & multi-storey house extensions, block paving, resin driveways, patio stone paving, and boundary walling."
+      >
+        <BrickWallIcon slot="icon" />
+      </ExpertiseCards>
+    </div>
+  </div>
+</section>

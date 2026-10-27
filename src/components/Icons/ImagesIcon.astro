@@ -1,0 +1,10 @@
+---
+import Icon, { type Props as IconProps } from "$components/Icons/Icon.astro";
+type Props = IconProps;
+---
+
+<Icon {...Astro.props}>
+  <path d="M3 3h18v18H3z" />
+  <circle cx="9" cy="9" r="2" />
+  <path d="m21 15-5-5L5 21" />
+</Icon>

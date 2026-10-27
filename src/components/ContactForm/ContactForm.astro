@@ -1,0 +1,140 @@
+---
+import { contact } from "$data/site";
+import Alert from "$components/Alert/Alert.astro";
+import ArrowRightIcon from "$components/Icons/ArrowRightIcon.astro";
+import MailIcon from "$components/Icons/MailIcon.astro";
+import PhoneCallIcon from "$components/Icons/PhoneCallIcon.astro";
+import PhoneIcon from "$components/Icons/PhoneIcon.astro";
+import UserIcon from "$components/Icons/UserIcon.astro";
+import "$components/ContactForm/ContactForm.css";
+
+interface Props {
+  id?: string;
+}
+
+const { id = "consultation" } = Astro.props;
+
+const projectTypes = [
+  { value: "extensions", label: "Bespoke House Extension" },
+  { value: "roofing", label: "Roofing & Leadwork Repair/New" },
+  { value: "carpentry", label: "Carpentry & Structural Joinery" },
+  { value: "kitchen-bath", label: "Kitchen or Bathroom Overhaul" },
+  { value: "driveway", label: "Driveway & Groundworks" },
+  { value: "commercial", label: "Commercial / Full Renovation" },
+];
+---
+
+<div class="contact-form technical-corner" id={id}>
+  <span class="contact-form__badge">Fast Response</span>
+  <div class="contact-form__body">
+    <div>
+      <h2 class="contact-form__title">Request a Free Consultation</h2>
+      <p class="contact-form__intro">
+        All quotations are given FREE without obligation. Our aim is to ensure
+        that all quotes are fully transparent so our customers know exactly what
+        they are being quoted for.
+      </p>
+    </div>
+
+    <form class="contact-form__form">
+      <div class="contact-form__field">
+        <label class="contact-form__label" for="full-name">Full Name *</label>
+        <div class="contact-form__input-wrap">
+          <UserIcon class="contact-form__input-icon" />
+          <input
+            class="contact-form__input contact-form__input--with-icon"
+            id="full-name"
+            name="name"
+            type="text"
+            placeholder="e.g. David Morrison"
+            autocomplete="name"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="contact-form__row">
+        <div class="contact-form__field">
+          <label class="contact-form__label" for="phone-number">
+            Phone Number *
+          </label>
+          <div class="contact-form__input-wrap">
+            <PhoneIcon class="contact-form__input-icon" />
+            <input
+              class="contact-form__input contact-form__input--with-icon"
+              id="phone-number"
+              name="phone"
+              type="tel"
+              placeholder="07951..."
+              autocomplete="tel"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="contact-form__field">
+          <label class="contact-form__label" for="email-address">
+            Email Address
+          </label>
+          <div class="contact-form__input-wrap">
+            <MailIcon class="contact-form__input-icon" />
+            <input
+              class="contact-form__input contact-form__input--with-icon"
+              id="email-address"
+              name="email"
+              type="email"
+              placeholder="name@domain.com"
+              autocomplete="email"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form__field">
+        <label class="contact-form__label" for="project-type">
+          Project Type *
+        </label>
+        <select
+          class="contact-form__input"
+          id="project-type"
+          name="project-type"
+          required
+        >
+          <option value="">Select building project...</option>
+          {
+            projectTypes.map((type) => (
+              <option value={type.value}>{type.label}</option>
+            ))
+          }
+        </select>
+      </div>
+
+      <div class="contact-form__field">
+        <label class="contact-form__label" for="project-overview">
+          Project Overview / Location
+        </label>
+        <textarea
+          class="contact-form__input contact-form__textarea"
+          id="project-overview"
+          name="overview"
+          rows="3"
+          placeholder="Brief details about property, postcode, planning status..."
+        ></textarea>
+      </div>
+
+      <button class="contact-form__submit" type="submit">
+        Send Free Enquiry
+        <ArrowRightIcon />
+      </button>
+
+    <Alert variant="compact">
+      <PhoneCallIcon slot="icon" />
+      Or call directly:
+      <a class="contact-form__phone-link" href={contact.phoneHref}>
+        {contact.phoneDisplay}
+      </a>
+      <span class="contact-form__phone-name">({contact.contactName})</span>
+    </Alert>
+    </form>
+  </div>
+</div>
