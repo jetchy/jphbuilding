@@ -145,7 +145,7 @@
   color: var(--color-text-on-dark);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 40em) {
   .site-footer__blurb {
     font-size: var(--text-sm);
   }
@@ -156,13 +156,13 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .site-footer__columns {
     grid-template-columns: 5fr 3fr 4fr;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
   .site-footer__columns {
     padding-block: var(--space-16);
   }

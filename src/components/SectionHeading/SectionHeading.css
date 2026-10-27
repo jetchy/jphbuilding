@@ -34,13 +34,13 @@
   text-align: center;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 40em) {
   .section-heading__intro {
     font-size: var(--text-lg);
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
   .section-heading--center {
     margin-bottom: var(--space-14);
   }

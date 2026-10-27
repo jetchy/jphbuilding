@@ -88,7 +88,7 @@ import "$components/SiteHeader/SiteHeader.css";
   });
 
   // Close the mobile menu if the viewport grows to the desktop nav.
-  window.matchMedia("(min-width: 768px)").addEventListener("change", (event) => {
+  window.matchMedia("(min-width: 48em)").addEventListener("change", (event) => {
     if (event.matches) setOpen(false);
   });
 </script>

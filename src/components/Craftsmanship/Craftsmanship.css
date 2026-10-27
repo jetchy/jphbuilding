@@ -10,7 +10,7 @@
   gap: var(--space-8);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .craftsmanship__grid {
     grid-template-columns: repeat(2, 1fr);
   }

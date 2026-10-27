@@ -47,7 +47,7 @@
   font-size: var(--text-sm);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 40em) {
   .alert--banner {
     font-size: var(--text-sm);
   }

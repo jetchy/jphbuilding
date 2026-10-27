@@ -114,7 +114,11 @@ Put styles in a separate CSS file in the same directory as the page or component
   - `--font-sans` (Plus Jakarta Sans) for headings, body and controls.
   - `--font-mono` (JetBrains Mono) for technical text: navigation, utility bar, overlines, form labels, badges, lozenge titles, footer link lists and the legal strip.
   - Overlines are `--text-overline`, bold, uppercase, `--tracking-widest`, `--color-text-subheading`.
-- **Breakpoints** (mobile-first `min-width` queries): `sm` 640px, `md` 768px, `lg` 1024px, `xl` 1280px. The utility strip is hidden below `md`. The indexed nav shows at `md` and up.
+- **No pixel units.** Use `rem` for sizes, spacing, borders, shadows and offsets, so everything scales with the user's browser font-size setting. Prefer tokens, which are already in `rem`.
+  - Media queries use `em` instead, which works more reliably across browsers.
+  - The only allowed `px` is the `1px` in `.visually-hidden`, the standard screen-reader-only technique.
+  - Showing pixel equivalents in comments is fine.
+- **Breakpoints** (mobile-first `min-width` queries in `em`): `sm` `40em` (640px), `md` `48em` (768px), `lg` `64em` (1024px), `xl` `80em` (1280px). Use the same values in JS `matchMedia` and `<Image sizes>`. The utility strip is hidden below `md`. The indexed nav shows at `md` and up.
 - **Grids:**
   - Showcase and testimonials: 1 column, then 2 from `md`.
   - Trade cards: 1, then 2 from `sm`, then 4 from `lg`.

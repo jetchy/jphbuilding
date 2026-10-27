@@ -25,8 +25,8 @@
   letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
   position: absolute;
-  top: -10px;
-  right: 10px;
+  top: calc(var(--space-2-5) * -1);
+  right: var(--space-2-5);
 }
 
 .contact-form__body {
@@ -154,7 +154,7 @@
   background-color: var(--color-accent-hover);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 40em) {
   .contact-form__body {
     padding: var(--space-7);
   }
