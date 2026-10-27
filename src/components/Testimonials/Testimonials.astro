@@ -1,0 +1,39 @@
+---
+import { enquireHref } from "$data/site";
+import SectionHeading from "$components/SectionHeading/SectionHeading.astro";
+import TestimonialCards from "$components/TestimonialCards/TestimonialCards.astro";
+import ArrowRightIcon from "$components/Icons/ArrowRightIcon.astro";
+import "./Testimonials.css";
+---
+
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <SectionHeading
+      overline="Client Endorsements"
+      title="Trusted by Cheltenham Families"
+    >
+      Read first-hand feedback from homeowners who put their largest investment
+      into the hands of Jason Heseltine and JPH Building.
+    </SectionHeading>
+
+    <div class="testimonials__grid">
+      <TestimonialCards
+        quote="His team were such pleasant guys and as my intention was for the building to look like an established coach house, it has been a great success. Couldn't recommend them higher."
+        name="Valerie du Monceau"
+        location="Cheltenham Homeowner"
+      />
+      <TestimonialCards
+        quote="Jason carried out a major structural extension on our Victorian home. Always on site early, honest costings, zero mess left behind. Truly professional builder."
+        name="Richard & Claire Evans"
+        location="Montpellier, Cheltenham"
+      />
+    </div>
+
+    <div class="testimonials__action">
+      <a class="testimonials__link" href={enquireHref}>
+        Read all customer testimonials
+        <ArrowRightIcon />
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+---
+import BaseLayout from "$layouts/BaseLayout.astro";
+import UtilityBar from "$components/UtilityBar/UtilityBar.astro";
+import SiteHeader from "$components/SiteHeader/SiteHeader.astro";
+import SiteFooter from "$components/SiteFooter/SiteFooter.astro";
+import "./Layout.css";
+
+type Props = {
+  title: string;
+  description?: string;
+};
+
+const { title, description } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <UtilityBar />
+  <SiteHeader />
+  <main id="main" class="site-main">
+    <slot />
+  </main>
+  <SiteFooter />
+</BaseLayout>

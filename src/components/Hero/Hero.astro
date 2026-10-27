@@ -1,0 +1,61 @@
+---
+import Alert from "$components/Alert/Alert.astro";
+import ContactForm from "$components/ContactForm/ContactForm.astro";
+import Lozenges from "$components/Lozenges/Lozenges.astro";
+import DraftingCompassIcon from "$components/Icons/DraftingCompassIcon.astro";
+import FileTextIcon from "$components/Icons/FileTextIcon.astro";
+import InfoIcon from "$components/Icons/InfoIcon.astro";
+import ShieldCheckIcon from "$components/Icons/ShieldCheckIcon.astro";
+import "./Hero.css";
+---
+
+<section class="hero blueprint-grid" id="about">
+  <div class="hero__ruler" aria-hidden="true"></div>
+
+  <div class="container hero__grid">
+    <div class="hero__content">
+      <p class="hero__tag">
+        <span class="hero__tag-marker" aria-hidden="true"></span>
+        Carpentry • Roofing • General Building
+      </p>
+
+      <div class="hero__headings">
+        <h1 class="hero__title">JPH Building</h1>
+        <p class="hero__subtitle">Your Local Cheltenham Builder</p>
+      </div>
+
+      <p class="hero__intro">
+        Owned and run by Jason Heseltine with over 30 years' experience in the
+        building industry. We specialise in high-calibre residential and
+        commercial projects: bespoke extensions, alterations, conversions,
+        structural alterations, premium roofing, driveways, and bespoke kitchen
+        &amp; bathroom installations.
+      </p>
+
+      <div class="hero__lozenges">
+        <Lozenges title="100% Guaranteed" text="All work fully insured">
+          <ShieldCheckIcon slot="icon" />
+        </Lozenges>
+        <Lozenges title="30+ Years Local" text="Jason Heseltine's lead">
+          <DraftingCompassIcon slot="icon" />
+        </Lozenges>
+        <Lozenges title="Direct Quotes" text="Transparent & clear">
+          <FileTextIcon slot="icon" />
+        </Lozenges>
+      </div>
+
+      <Alert>
+        <InfoIcon slot="icon" />
+        <p>
+          Our approach is the same for every customer, irrespective of project
+          size or budget. We ensure your expectations are met from start to
+          finish.
+        </p>
+      </Alert>
+    </div>
+
+    <div class="hero__form">
+      <ContactForm />
+    </div>
+  </div>
+</section>

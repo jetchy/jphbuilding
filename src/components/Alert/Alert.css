@@ -1,0 +1,53 @@
+.alert {
+  display: flex;
+  gap: var(--space-3);
+  background-color: var(--color-surface-callout);
+  color: var(--color-text-strong);
+}
+
+.alert__icon {
+  display: flex;
+  color: var(--color-primary);
+}
+
+.alert__content > :first-child {
+  margin-top: 0;
+}
+
+.alert__content > :last-child {
+  margin-bottom: 0;
+}
+
+/* Hero info banner */
+.alert--banner {
+  align-items: flex-start;
+  padding: var(--space-4);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-normal);
+}
+
+.alert--banner .alert__icon {
+  padding-top: var(--space-0-5);
+  font-size: var(--text-lg);
+}
+
+/* Bordered callout inside the contact form */
+.alert--compact {
+  align-items: center;
+  gap: var(--space-2-5);
+  padding: var(--space-3);
+  border: var(--border-width-hairline) solid var(--color-border-tint-strong);
+  color: var(--color-text-heading);
+  font-size: var(--text-xs);
+}
+
+.alert--compact .alert__icon {
+  font-size: var(--text-sm);
+}
+
+@media (min-width: 640px) {
+  .alert--banner {
+    font-size: var(--text-sm);
+  }
+}

@@ -1,0 +1,146 @@
+@import "./tokens.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  border-radius: var(--radius);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  /* Keep anchor targets clear of the sticky header. */
+  scroll-padding-top: var(--header-height);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--color-surface);
+  color: var(--color-text-body);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--leading-relaxed);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  color: var(--color-text-heading);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-tight);
+}
+
+h1 {
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: var(--tracking-tight);
+}
+
+h2 {
+  font-size: var(--text-h2);
+}
+
+h3 {
+  font-size: var(--text-h3);
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: var(--border-width-blueprint) solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-gutter);
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-inline: var(--container-gutter-sm);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: var(--container-gutter-lg);
+  }
+}
+
+/* Faint drafting-paper grid used behind the hero and trades sections */
+.blueprint-grid {
+  background-color: var(--color-surface-wash);
+  background-image: var(--bg-blueprint-grid);
+  background-size: var(--grid-size) var(--grid-size);
+}
+
+/* Drafting corner brackets (top-left, bottom-right) on blueprint cards */
+.technical-corner {
+  position: relative;
+}
+
+.technical-corner::before,
+.technical-corner::after {
+  content: "";
+  position: absolute;
+  width: var(--corner-size);
+  height: var(--corner-size);
+  border-color: var(--color-primary);
+  border-style: solid;
+  border-width: 0;
+  pointer-events: none;
+}
+
+.technical-corner::before {
+  top: calc(var(--border-width-blueprint) * -1);
+  left: calc(var(--border-width-blueprint) * -1);
+  border-top-width: var(--border-width-blueprint);
+  border-left-width: var(--border-width-blueprint);
+}
+
+.technical-corner::after {
+  right: calc(var(--border-width-blueprint) * -1);
+  bottom: calc(var(--border-width-blueprint) * -1);
+  border-right-width: var(--border-width-blueprint);
+  border-bottom-width: var(--border-width-blueprint);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

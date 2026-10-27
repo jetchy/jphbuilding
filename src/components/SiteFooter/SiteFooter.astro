@@ -1,0 +1,82 @@
+---
+import { Image } from "astro:assets";
+import {
+  companyBlurb,
+  contact,
+  footerNavItems,
+  footerServices,
+  legalLinks,
+} from "$data/site";
+import PhoneIcon from "$components/Icons/PhoneIcon.astro";
+import logo from "$images/logo.gif";
+import "./SiteFooter.css";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__columns">
+    <section class="site-footer__company" aria-labelledby="footer-company">
+      <div class="site-footer__logo">
+        <Image src={logo} alt="" class="site-footer__logo-img" />
+      </div>
+      <h2 id="footer-company" class="site-footer__company-name">
+        JPH Building Ltd
+      </h2>
+      <p class="site-footer__blurb">{companyBlurb}</p>
+      <a class="site-footer__phone" href={contact.phoneHref}>
+        <PhoneIcon class="site-footer__phone-icon" />
+        Direct Line: {contact.phoneDisplay}
+      </a>
+    </section>
+
+    <nav class="site-footer__column" aria-labelledby="footer-nav">
+      <h2 id="footer-nav" class="site-footer__heading">Navigation</h2>
+      <ul class="site-footer__list">
+        {
+          footerNavItems.map((item) => (
+            <li>
+              <a class="site-footer__link" href={item.href}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <section class="site-footer__column" aria-labelledby="footer-services">
+      <h2 id="footer-services" class="site-footer__heading">Key Services</h2>
+      <ul class="site-footer__list">
+        {
+          footerServices.map((service) => (
+            <li>
+              <a class="site-footer__link" href="#expertise">
+                {service}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+
+  <div class="site-footer__legal">
+    <div class="container site-footer__legal-inner">
+      <p class="site-footer__copyright">
+        &copy; {year} JPH Building Ltd. All rights reserved. Cheltenham, Gloucestershire.
+      </p>
+      <ul class="site-footer__legal-links">
+        {
+          legalLinks.map((link) => (
+            <li>
+              <a class="site-footer__legal-link" href={link.href}>
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</footer>

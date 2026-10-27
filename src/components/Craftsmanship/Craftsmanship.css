@@ -1,0 +1,17 @@
+.craftsmanship {
+  padding-block: var(--section-padding-block);
+  border-bottom: var(--border-blueprint);
+  background-color: var(--color-surface);
+}
+
+.craftsmanship__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .craftsmanship__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

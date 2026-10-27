@@ -1,0 +1,47 @@
+---
+import CraftsmanshipCards from "$components/CraftsmanshipCards/CraftsmanshipCards.astro";
+import SectionHeading from "$components/SectionHeading/SectionHeading.astro";
+import ImagesIcon from "$components/Icons/ImagesIcon.astro";
+import RulerCombinedIcon from "$components/Icons/RulerCombinedIcon.astro";
+import carpentryImage from "$images/showcase-carpentry.jpg";
+import extensionImage from "$images/showcase-extension.jpg";
+import "./Craftsmanship.css";
+---
+
+<section class="craftsmanship" id="services">
+  <div class="container">
+    <SectionHeading
+      overline="Comprehensive Building Solutions"
+      title="Complete Craftsmanship Under One Trusted Roof"
+    >
+      Bridging the gap between timeless Cotswold architectural heritage and
+      sharp contemporary living spaces.
+    </SectionHeading>
+
+    <div class="craftsmanship__grid">
+      <CraftsmanshipCards
+        title="Gallery & Recent Work"
+        text="View some of the bespoke projects we have completed ranging from full double-storey extensions, renovations, barn conversions, and domestic refurbishments across Cheltenham."
+        badge="Portfolio Highlight"
+        image={extensionImage}
+        imageAlt="Bespoke modern home extension in Cheltenham"
+        linkLabel="View Gallery & Case Studies"
+        href="#gallery"
+      >
+        <ImagesIcon slot="icon" />
+      </CraftsmanshipCards>
+
+      <CraftsmanshipCards
+        title="Our Services"
+        text="We pride ourselves on our modern and contemporary approach to architectural design and construction, whilst diligently maintaining traditional building methods and durability."
+        badge="Master Carpentry"
+        image={carpentryImage}
+        imageAlt="Master carpentry workshop and structural plan measurement"
+        linkLabel="Explore All Trade Services"
+        href="#expertise"
+      >
+        <RulerCombinedIcon slot="icon" />
+      </CraftsmanshipCards>
+    </div>
+  </div>
+</section>

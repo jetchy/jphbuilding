@@ -1,0 +1,9 @@
+/* Icons size to the surrounding font-size; set font-size or width/height
+   on the icon's class to resize. */
+.icon {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+}

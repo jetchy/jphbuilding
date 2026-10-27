@@ -1,0 +1,11 @@
+---
+import Icon, { type Props as IconProps } from "./Icon.astro";
+type Props = IconProps;
+---
+
+<Icon {...Astro.props}>
+  <path d="M3 11 12 4l9 7" />
+  <path d="M5 10v11h14V10" />
+  <path d="M16 7V3h2v5.5" />
+  <path d="M10 21v-6h4v6" />
+</Icon>
