@@ -172,3 +172,8 @@ The Google Stitch HTML export is the visual reference for the landing page. Wher
 - **Removed metadata**: the form reference tag, form footer note, trade division codes (`DIV-ROOF` …) and testimonial record references are not shown.
 - **Footer logo**: sits on a white plate with a 2px blueprint border so it reads on navy.
 - **Icons**: inline SVG components with square line caps (replacing Font Awesome).
+- **Completed Renovations band (`Showcase`)**: a full-width section between Expertise and Testimonials (`id="gallery"`).
+  - **Background:** a project photo blurred by 4px (`--showcase-blur`) under a 72% black overlay (`--color-overlay-photo`), with a muted surface colour as a fallback.
+  - **Size:** minimum height 32rem; content up to 38rem wide.
+  - **Text:** white mono "Portfolio Highlight" overline, white `h2` and body text. The body text grows from 16px to 18px at 40em.
+  - **Link:** an arrow link to `/completed-renovations` in the lighter orange `#F97316` (hover `#FDBA74`), tokenised as `--color-accent-on-dark` / `--color-accent-on-dark-hover`. The standard CTA orange is too dark to read on the overlay.

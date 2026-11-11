@@ -1,0 +1,17 @@
+---
+import ArrowRightIcon from "$components/Icons/ArrowRightIcon.astro";
+import "$components/ArrowLink/ArrowLink.css";
+
+interface Props {
+  href: string;
+  /* "on-dark" uses the lighter orange for dark or photo backgrounds. */
+  variant?: "default" | "on-dark";
+}
+
+const { href, variant = "default" } = Astro.props;
+---
+
+<a class:list={["arrow-link", `arrow-link--${variant}`]} href={href}>
+  <slot />
+  <ArrowRightIcon />
+</a>

@@ -1,0 +1,30 @@
+---
+import { Font } from "astro:assets";
+
+const { title, description } = Astro.props;
+---
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="generator" content={Astro.generator} />
+  {description && <meta name="description" content={description} />}
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:type" content="website" />
+  <meta
+    property="og:title"
+    content="JPH Building - Your local Cheltenham Builder"
+  />
+  <meta
+    property="og:description"
+    content="JPH Building Ltd is a local Cheltenham Building Company that always aims to provide a highly professional service to past, present, and future customers. The business is owned and run by Jason Heseltine who has over 30 years’ experience in the building industry. Our Company specialises in both commercial and residential projects including alterations, extensions, [&hellip;]"
+  />
+  <!-- <meta property="og:url" content="https://www.jphbuilding.co.uk/" /> -->
+  <meta property="og:site_name" content="JPH Building" />
+  <meta property="article:modified_time" content="2021-08-12T21:00:04+00:00" />
+  <title>{title}</title>
+  <Font cssVariable="--font-jakarta" preload />
+  <Font cssVariable="--font-jetbrains" />
+</head>

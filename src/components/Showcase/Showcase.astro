@@ -1,0 +1,32 @@
+---
+import { getImage } from "astro:assets";
+import ArrowLink from "$components/ArrowLink/ArrowLink.astro";
+import showcaseImage from "$images/showcase-extension.jpg";
+import "$components/Showcase/Showcase.css";
+
+// Optimised through Astro's image pipeline, then handed to the CSS as a
+// custom property so the blurred background stays in Showcase.css.
+const background = await getImage({ src: showcaseImage, format: "webp" });
+---
+
+<section
+  class="showcase"
+  id="gallery"
+  aria-labelledby="showcase-title"
+  style={{ "--showcase-image": `url("${background.src}")` }}
+>
+  <div class="container">
+    <div class="showcase__content">
+      <span class="showcase__badge">Portfolio Highlight</span>
+      <h2 class="showcase__title" id="showcase-title">Completed Renovations</h2>
+      <p class="showcase__text">
+        View some of the bespoke projects we have completed ranging from full
+        double-storey extensions, renovations, barn conversions, and domestic
+        refurbishments across Cheltenham.
+      </p>
+      <ArrowLink href="/completed-renovations" variant="on-dark">
+        View Gallery &amp; Case Studies
+      </ArrowLink>
+    </div>
+  </div>
+</section>
