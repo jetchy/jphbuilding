@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
-import ArrowRightIcon from "$components/Icons/ArrowRightIcon.astro";
+import ArrowLink from "$components/ArrowLink/ArrowLink.astro";
 import "$components/CraftsmanshipCards/CraftsmanshipCards.css";
 
 interface Props {
@@ -38,9 +38,6 @@ const { title, text, badge, image, imageAlt, linkLabel, href } = Astro.props;
   </div>
 
   <div class="craftsmanship-card__footer">
-    <a class="craftsmanship-card__link" href={href}>
-      {linkLabel}
-      <ArrowRightIcon />
-    </a>
+    <ArrowLink href={href}>{linkLabel}</ArrowLink>
   </div>
 </article>

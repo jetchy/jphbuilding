@@ -19,6 +19,8 @@
   --blue-100-a90: rgb(219 234 254 / 0.9);
   --blue-50: #eff6ff;
 
+  --orange-300: #fdba74;
+  --orange-500: #f97316;
   --orange-600: #ea580c;
   --orange-700: #c2410c;
   --orange-vivid: #f25100;
@@ -38,6 +40,7 @@
   --slate-800: #1e293b;
   --slate-900: #0f172a;
 
+  --black-a72: rgb(0 0 0 / 0.72);
   --white: #ffffff;
   --white-a95: rgb(255 255 255 / 0.95);
   --white-a90: rgb(255 255 255 / 0.9);
@@ -51,6 +54,10 @@
   --color-accent: var(--orange-600);
   --color-accent-hover: var(--orange-700);
   --color-on-accent: var(--white);
+  /* Lighter orange for links on dark or photo backgrounds, where the CTA
+     orange is too dark to read comfortably. */
+  --color-accent-on-dark: var(--orange-500);
+  --color-accent-on-dark-hover: var(--orange-300);
 
   /* Surfaces */
   --color-surface: var(--white);
@@ -62,6 +69,7 @@
   --color-surface-callout: var(--blue-50);
   --color-surface-tag: var(--blue-100-a90);
   --color-surface-badge: var(--white-a95);
+  --color-overlay-photo: var(--black-a72);
 
   /* Text */
   --color-text-heading: var(--slate-900);
@@ -190,6 +198,10 @@
   --logo-height-footer: var(--space-10);
   --icon-box-size: var(--space-10);
   --media-height: 16rem; /* 256px — showcase card photos */
+  --showcase-min-height: 32rem; /* 512px */
+  --showcase-content-width: 38rem; /* 608px */
+  --showcase-blur: 0.25rem; /* 4px */
+  --showcase-bleed: var(--space-6); /* hides the blur's soft edges */
   --heading-rule-width: var(--space-20);
   --heading-rule-height: var(--space-1);
   --marker-size: var(--space-2);

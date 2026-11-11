@@ -12,16 +12,17 @@ Static website built with Astro. Follow Astro conventions for routing and compon
 
 ### Single-page site
 
-The site is currently one landing page (`src/pages/index.astro`) built from section components. Navigation links point to section anchors (`#about`, `#expertise`, `#testimonials`, `#consultation`), not to separate pages. When you add a section, give it the matching `id` and add it to `navItems` in `src/data/site.ts`.
+The site is currently one landing page (`src/pages/index.astro`) built from section components. Navigation links point to section anchors (`#about`, `#expertise`, `#gallery`, `#testimonials`, `#consultation`), not to separate pages. When you add a section, give it the matching `id` and add it to `navItems` in `src/data/site.ts`.
 
 - **Nav numbering:** the `01/`, `02/` … indexes in `navItems` must stay sequential. Renumber them whenever an item is added, removed or restored.
 - **Parked content:** these are deliberately hidden, not forgotten. Don't restore them unless asked.
-  - The "Why JPH" and "Gallery" nav and footer links are commented out in `src/data/site.ts` until those sections are written.
+  - The "Why JPH" and "Gallery" nav and footer links are commented out in `src/data/site.ts`. "Why JPH" has no section yet. The `Showcase` section now carries `id="gallery"`, but the Gallery link stays hidden until it's re-enabled on request.
   - The `Craftsmanship` section (with `CraftsmanshipCards`) is built but not used on the page. Re-add `<Craftsmanship />` after `<Hero />` in `index.astro` to bring it back. Note that it carries `id="services"`.
 
 ### Component structure and naming
 
-- **One component per section:** `Hero`, `Craftsmanship`, `Expertise`, `Testimonials`, `SiteHeader`, `UtilityBar`, `SiteFooter`.
+- **One component per section:** `Hero`, `Craftsmanship`, `Expertise`, `Showcase`, `Testimonials`, `SiteHeader`, `UtilityBar`, `SiteFooter`.
+- **Page order** in `index.astro`: `Hero` → `Expertise` → `Showcase` ("Completed Renovations") → `Testimonials`.
 - **Repeated or reusable parts are their own components**, named after what they are:
 
   | Component            | What it is                                                        |
@@ -33,11 +34,14 @@ The site is currently one landing page (`src/pages/index.astro`) built from sect
   | `ExpertiseCards`     | Trade card with icon box, title and text                            |
   | `TestimonialCards`   | Client quote card with name and location                            |
   | `SectionHeading`     | Overline, `h2`, orange rule and optional intro                      |
+  | `ArrowLink`          | Uppercase text link with a trailing arrow; `variant="on-dark"` for dark/photo backgrounds |
 
 - Each card component renders a single card; the section component lays out the grid.
 - Name new components after the part they represent, in PascalCase, and use a matching kebab-case BEM block for their CSS classes (`TestimonialCards` → `.testimonial-card`, `.testimonial-card__name`).
 - Component CSS is imported in frontmatter, so it is global, not scoped. Always prefix class names with the component's block name to avoid collisions.
 - Pass icons into components through a named `icon` slot (`<ShieldCheckIcon slot="icon" />`).
+- Never style one component with another component's class (e.g. `.craftsmanship-card__link` inside `Showcase`). Its CSS only loads when that component is on the page. Extract shared pieces into their own component instead, as `ArrowLink` was.
+- **CSS background images:** run them through `getImage()` from `astro:assets` in the component, and pass the result to the stylesheet as a custom property (see `Showcase`). Don't link straight to files in `src/images` from CSS.
 - **Testimonials** live in `src/data/testimonials.ts`.
   - They are verbatim excerpts from the current live site (jphbuilding.co.uk/testimonials/). Never reword, "tidy up" or invent a testimonial or client name.
   - Mark any skipped text with "…".
@@ -108,6 +112,7 @@ Put styles in a separate CSS file in the same directory as the page or component
   Don't add shadows anywhere else, and don't add hover shadows.
 - **Colour roles:**
   - Orange (`--color-accent`, with `--color-accent-hover` on hover) is for conversion CTAs, the "FAST RESPONSE" badge, arrow text links, the hero tag marker, the section-heading rule, the footer's top rule and phone icons. Don't use it anywhere else.
+  - On dark or photo backgrounds (the `Showcase` band), arrow links use the lighter `--color-accent-on-dark` / `--color-accent-on-dark-hover` instead.
   - Brand blue (`--color-primary`) is for lines, accents, icons and active states.
   - Navy (`--color-surface-dark`) is for the top utility strip and the footer only.
 - **Typography:**
