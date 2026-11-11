@@ -5,6 +5,10 @@ import CloseIcon from "$components/Icons/CloseIcon.astro";
 import MenuIcon from "$components/Icons/MenuIcon.astro";
 import logo from "$images/logo.gif";
 import "$components/SiteHeader/SiteHeader.css";
+
+// Page links (not "/#section" anchors) are marked current on their own page.
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isCurrent = (href: string) => !href.includes("#") && href === currentPath;
 ---
 
 <header class="site-header">
@@ -19,7 +23,11 @@ import "$components/SiteHeader/SiteHeader.css";
           {
             navItems.map((item) => (
               <li>
-                <a href={item.href} class="site-nav__link">
+                <a
+                  href={item.href}
+                  class="site-nav__link"
+                  aria-current={isCurrent(item.href) ? "page" : undefined}
+                >
                   <span class="site-nav__index">{item.index}/</span>
                   {item.label}
                 </a>
@@ -50,7 +58,11 @@ import "$components/SiteHeader/SiteHeader.css";
       {
         navItems.map((item) => (
           <li>
-            <a href={item.href} class="mobile-menu__link">
+            <a
+              href={item.href}
+              class="mobile-menu__link"
+              aria-current={isCurrent(item.href) ? "page" : undefined}
+            >
               <span class="site-nav__index">{item.index}/</span>
               {item.label}
             </a>

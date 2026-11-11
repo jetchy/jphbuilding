@@ -1,0 +1,73 @@
+[
+  {
+    "id": "ext-1",
+    "title": "Rear Extension",
+    "category": "external",
+    "image": "../images/gallery/rear-extension.jpg",
+    "alt": "Bespoke modern rear extension in Cheltenham",
+    "order": 1
+  },
+  {
+    "id": "ext-2",
+    "title": "Garage Extension",
+    "category": "external",
+    "order": 2
+  },
+  {
+    "id": "ext-3",
+    "title": "Roof & Leadwork",
+    "category": "external",
+    "order": 3
+  },
+  {
+    "id": "ext-4",
+    "title": "Resin Driveway",
+    "category": "external",
+    "order": 4
+  },
+  {
+    "id": "ext-5",
+    "title": "Barn Conversion",
+    "category": "external",
+    "order": 5
+  },
+  {
+    "id": "ext-6",
+    "title": "Block Paving",
+    "category": "external",
+    "order": 6
+  },
+  {
+    "id": "int-1",
+    "title": "Bespoke Joinery",
+    "category": "internal",
+    "image": "../images/gallery/bespoke-joinery.jpg",
+    "alt": "Carpenter measuring timber in the joinery workshop",
+    "order": 1
+  },
+  {
+    "id": "int-2",
+    "title": "Kitchen Refit",
+    "category": "internal",
+    "order": 2
+  },
+  {
+    "id": "int-3",
+    "title": "Bathroom Refit",
+    "category": "internal",
+    "order": 3
+  },
+  {
+    "id": "int-4",
+    "title": "Loft Conversion",
+    "category": "internal",
+    "order": 4
+  },
+  {
+    "id": "int-5",
+    "title": "Structural Alterations",
+    "category": "internal",
+    "order": 5
+  },
+  { "id": "int-6", "title": "Staircase", "category": "internal", "order": 6 }
+]

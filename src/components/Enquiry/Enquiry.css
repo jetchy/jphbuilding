@@ -1,0 +1,10 @@
+.enquiry__form {
+  max-width: var(--enquiry-form-width);
+  margin-inline: auto;
+}
+
+/* html already offsets anchors by the header height; add breathing room so
+   "Enquire Now" lands with space above the form. */
+.enquiry__form .contact-form {
+  scroll-margin-top: var(--space-6);
+}

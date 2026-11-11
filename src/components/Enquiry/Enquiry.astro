@@ -1,0 +1,19 @@
+---
+import ContactForm from "$components/ContactForm/ContactForm.astro";
+import "$styles/hero.css";
+import "$components/Enquiry/Enquiry.css";
+---
+
+<!-- Contact form in a hero-style band, for the bottom of internal pages. -->
+<section
+  class="hero blueprint-grid enquiry"
+  id="enquiry"
+  aria-label="Request a free consultation"
+>
+  <div class="hero__ruler" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero__form enquiry__form">
+      <ContactForm />
+    </div>
+  </div>
+</section>

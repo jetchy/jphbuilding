@@ -1,0 +1,40 @@
+---
+import { Image, getImage } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import "$components/GalleryItem/GalleryItem.css";
+
+interface Props {
+  id: string;
+  title: string;
+  image?: ImageMetadata;
+  alt?: string;
+}
+
+const { id, title, image, alt } = Astro.props;
+
+// Full-size optimised image for the link; a future lightbox can intercept the
+// click via data-gallery-item without changing this markup.
+const fullSize = image ? await getImage({ src: image, format: "webp" }) : undefined;
+// Tiles are at most ~400px wide; only request widths the source can supply.
+const widths = image ? [400, 800].filter((w) => w <= image.width) : [];
+---
+
+<li class="gallery-item">
+  {
+    image && fullSize ? (
+      <a class="gallery-item__link" href={fullSize.src} data-gallery-item={id}>
+        <Image
+          src={image}
+          alt={alt ?? title}
+          class="gallery-item__image"
+          widths={widths.length ? widths : [image.width]}
+          sizes="(min-width: 48em) 33vw, 15.5rem"
+          loading="lazy"
+        />
+        <span class="gallery-item__badge">{title}</span>
+      </a>
+    ) : (
+      <span class="gallery-item__badge">{title}</span>
+    )
+  }
+</li>

@@ -1,35 +1,4 @@
-.hero {
-  position: relative;
-  overflow: hidden;
-  padding-block: var(--space-12);
-  border-bottom: var(--border-blueprint);
-}
-
-/* Drafting ruler ticks along the top edge */
-.hero__ruler {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: var(--ruler-height);
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      var(--color-primary) 0,
-      var(--color-primary) var(--border-width-hairline),
-      transparent var(--border-width-hairline),
-      transparent var(--ruler-tick-minor)
-    ),
-    repeating-linear-gradient(
-      90deg,
-      var(--color-primary) 0,
-      var(--color-primary) var(--border-width-blueprint),
-      transparent var(--border-width-blueprint),
-      transparent var(--ruler-tick-major)
-    );
-  opacity: var(--ruler-opacity);
-}
-
+/* Home-page-only hero layout. Shared hero styles live in $styles/hero.css. */
 .hero__grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -67,32 +36,6 @@
   background-color: var(--color-accent);
 }
 
-.hero__headings {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.hero__title {
-  line-height: var(--leading-none);
-}
-
-.hero__subtitle {
-  margin: 0;
-  color: var(--color-text-subheading);
-  font-size: var(--text-hero-subtitle);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--tracking-tight);
-  line-height: var(--leading-tight);
-}
-
-.hero__intro {
-  max-width: var(--measure);
-  margin: 0;
-  color: var(--color-text-body);
-  font-size: var(--text-base);
-}
-
 .hero__lozenges {
   display: grid;
   grid-template-columns: 1fr;
@@ -100,25 +43,13 @@
   padding-top: var(--space-2);
 }
 
-.hero__form {
-  min-width: 0;
-}
-
 @media (min-width: 40em) {
-  .hero__intro {
-    font-size: var(--text-lg);
-  }
-
   .hero__lozenges {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (min-width: 64em) {
-  .hero {
-    padding-block: var(--space-16);
-  }
-
   .hero__grid {
     grid-template-columns: 7fr 5fr;
   }

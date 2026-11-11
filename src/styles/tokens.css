@@ -131,6 +131,7 @@
   --text-h2: clamp(var(--text-3xl), 1.5rem + 1.2vw, var(--text-4xl));
   --text-h3: clamp(var(--text-lg), 1rem + 0.4vw, var(--text-xl));
   --text-card-title: var(--text-2xl);
+  --text-page-title: 2.625rem; /* 42px — PageHero title on internal pages */
   --text-quote-mark: var(--text-5xl);
   --text-overline: var(--text-xs);
   --text-body: var(--text-base);
@@ -202,6 +203,9 @@
   --showcase-content-width: 38rem; /* 608px */
   --showcase-blur: 0.25rem; /* 4px */
   --showcase-bleed: var(--space-6); /* hides the blur's soft edges */
+  --gallery-tile-size: 15.5rem; /* 248px — fixed square tiles below 48em */
+  --gallery-rule-opacity: 0.35;
+  --enquiry-form-width: 40rem; /* 640px */
   --heading-rule-width: var(--space-20);
   --heading-rule-height: var(--space-1);
   --marker-size: var(--space-2);
