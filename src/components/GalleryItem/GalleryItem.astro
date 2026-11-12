@@ -15,8 +15,9 @@ const { id, title, image, alt } = Astro.props;
 // Full-size optimised image for the link; a future lightbox can intercept the
 // click via data-gallery-item without changing this markup.
 const fullSize = image ? await getImage({ src: image, format: "webp" }) : undefined;
-// Tiles are at most ~400px wide; only request widths the source can supply.
-const widths = image ? [400, 800].filter((w) => w <= image.width) : [];
+// Tiles are full width on phones and ~400px on desktop; only request widths
+// the source can supply.
+const widths = image ? [400, 800, 1200].filter((w) => w <= image.width) : [];
 ---
 
 <li class="gallery-item">
@@ -28,7 +29,7 @@ const widths = image ? [400, 800].filter((w) => w <= image.width) : [];
           alt={alt ?? title}
           class="gallery-item__image"
           widths={widths.length ? widths : [image.width]}
-          sizes="(min-width: 48em) 33vw, 15.5rem"
+          sizes="(min-width: 48em) 33vw, 100vw"
           loading="lazy"
         />
         <span class="gallery-item__badge">{title}</span>

@@ -203,7 +203,7 @@
   --showcase-content-width: 38rem; /* 608px */
   --showcase-blur: 0.25rem; /* 4px */
   --showcase-bleed: var(--space-6); /* hides the blur's soft edges */
-  --gallery-tile-size: 15.5rem; /* 248px — fixed square tiles below 48em */
+  --gallery-tile-height: 15.5rem; /* 248px — full-width tiles below 48em */
   --gallery-rule-opacity: 0.35;
   --enquiry-form-width: 40rem; /* 640px */
   --heading-rule-width: var(--space-20);

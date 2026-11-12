@@ -1,4 +1,4 @@
-/* Below 48em: two labelled groups of fixed square tiles.
+/* Below 48em: two labelled groups of full-width, fixed-height stacked tiles.
    48em and up: labels hidden and every tile flows into one 3-column grid. */
 .gallery {
   padding-block: var(--space-16);
@@ -47,8 +47,7 @@
 
 .gallery__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, var(--gallery-tile-size));
-  justify-content: center;
+  grid-template-columns: 1fr;
   gap: var(--space-6);
   margin: 0;
   padding: 0;

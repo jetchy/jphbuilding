@@ -187,7 +187,7 @@ The Google Stitch HTML export is the visual reference for the landing page. Wher
   - Padding: 2.5rem, rising to 3rem at 64em.
   - Text sizes: 2.625rem title (`--text-page-title`), 1.5rem subtitle, 1rem intro.
 - **Gallery:**
-  - **Below 48em:** two labelled groups, "External (n)" and "Internal (n)". Each label is a mono uppercase blue line followed by a rule at 35% opacity. Tiles are fixed 15.5rem squares (`--gallery-tile-size`), centred.
+  - **Below 48em:** two labelled groups, "External (n)" and "Internal (n)". Each label is a mono uppercase blue line followed by a rule at 35% opacity. Tiles stack one per row at full width and a fixed 15.5rem height (`--gallery-tile-height`). Photos fill each tile like `background-size: cover`, cropped to fit.
   - **48em and up:** labels hidden; every tile flows into one 3-column grid of fluid square tiles, External first.
   - **Tiles:** 0.125rem blueprint border on a muted surface, with a white mono title badge at the top left.
   - **Tiles with a photo** link to the full-size image. On hover the border turns orange; the focus outline is an inset 0.125rem brand-blue line.

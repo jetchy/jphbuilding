@@ -4,63 +4,63 @@
     "title": "Driveway",
     "category": "external",
     "image": "../images/gallery/gallery-driveway-02.jpg",
-    "alt": "Finished driveway",
+    "alt": "Red herringbone block-paved driveway with a charcoal border in front of a detached house",
     "order": 1
   },
   {
     "id": "ext-2",
     "title": "Garden room",
-    "image": "../images/gallery/gallery-garden-room-04.jpg",
-    "alt": "Garden room",
     "category": "external",
+    "image": "../images/gallery/gallery-garden-room-04.jpg",
+    "alt": "Timber-clad garden room with grey glazed double doors, set on decking at the end of a lawn",
     "order": 2
   },
   {
     "id": "ext-3",
     "title": "Extension above garage",
-    "image": "../images/gallery/gallery-kingwilliam-01.jpg",
-    "alt": "Extension above garage",
     "category": "external",
+    "image": "../images/gallery/gallery-kingwilliam-01.jpg",
+    "alt": "Brick house with a first-floor extension built above the garage, matching the original brickwork and roof tiles",
     "order": 3
   },
   {
     "id": "ext-4",
     "title": "Single storey kitchen renovation",
-    "image": "../images/gallery/gould-after.jpg",
-    "alt": "Single storey kitchen renovation",
     "category": "external",
+    "image": "../images/gallery/gould-after.jpg",
+    "alt": "Rendered single-storey rear extension with a hipped tiled roof and white French doors opening onto a patio",
     "order": 4
   },
   {
     "id": "ext-5",
     "title": "Wrap around extension",
-    "image": "../images/gallery/gosling-after.jpg",
-    "alt": "Single storey kitchen renovation",
     "category": "external",
+    "image": "../images/gallery/gosling-after.jpg",
+    "alt": "Brick single-storey wrap-around extension with a tiled lean-to roof and roof windows",
     "order": 5
   },
   {
     "id": "ext-6",
     "title": "Extension",
-    "image": "../images/gallery/smiles-after.jpg",
-    "alt": "Extension",
     "category": "external",
-    "order": 5
+    "image": "../images/gallery/smiles-after.jpg",
+    "alt": "Flat-roof rear extension with full-width bi-fold doors and a roof lantern, opening onto decking and a stone patio",
+    "order": 6
   },
   {
     "id": "ext-7",
     "title": "House refurbishment",
-    "image": "../images/gallery/gallery-smiles-front-01.jpg",
-    "alt": "Extension",
     "category": "external",
-    "order": 5
-  },  
+    "image": "../images/gallery/gallery-smiles-front-01.jpg",
+    "alt": "Refurbished two-storey rendered house with new windows and a pitched-roof entrance porch on columns",
+    "order": 7
+  },
   {
     "id": "int-1",
     "title": "Bathroom",
+    "category": "internal",
     "image": "../images/gallery/gallery-bathroom-04.jpg",
-    "alt": "Extension",
-    "category": "external",
-    "order": 5
+    "alt": "White tiled bathroom with a shower over the bath, glass screen and a vertical strip of mosaic tiles",
+    "order": 1
   }
 ]

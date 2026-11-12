@@ -1,9 +1,11 @@
-/* One square gallery tile. Tiles with a photo are links to the full-size
-   image; tiles without one are muted placeholders showing just the badge. */
+/* One gallery tile. Tiles with a photo are links to the full-size image;
+   tiles without one are muted placeholders showing just the badge.
+   Phones: full width at a fixed height. 48em+: square tiles.
+   The photo always covers the tile and is cropped by overflow: hidden. */
 .gallery-item {
   position: relative;
-  width: var(--gallery-tile-size);
-  height: var(--gallery-tile-size);
+  width: 100%;
+  height: var(--gallery-tile-height);
   overflow: hidden;
   border: var(--border-blueprint);
   background-color: var(--color-surface-muted);
@@ -26,6 +28,7 @@
   outline-offset: calc(var(--focus-offset) * -2);
 }
 
+/* Like background-size: cover — fills the tile, cropping whatever overflows. */
 .gallery-item__image {
   display: block;
   width: 100%;
@@ -54,7 +57,6 @@
 
 @media (min-width: 48em) {
   .gallery-item {
-    width: auto;
     height: auto;
     aspect-ratio: 1 / 1;
   }
