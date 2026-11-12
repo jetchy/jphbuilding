@@ -1,0 +1,24 @@
+---
+import "$styles/hero.css";
+import "$components/PageHero/PageHero.css";
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  intro?: string;
+  id?: string;
+}
+
+const { title, subtitle, intro, id } = Astro.props;
+---
+
+<section class="page-hero blueprint-grid" id={id}>
+  <div class="hero__ruler" aria-hidden="true"></div>
+  <div class="container page-hero__content">
+    <h1 class="hero__headings">
+      <span class="hero__title">{title}</span>
+      {subtitle && <span class="hero__subtitle">{subtitle}</span>}
+    </h1>
+    {intro && <p class="hero__intro">{intro}</p>}
+  </div>
+</section>

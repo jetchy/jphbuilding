@@ -1,12 +1,17 @@
 ---
-import { Font } from "astro:assets";
+import Head from "$components/Head/Head.astro";
 import "$styles/global.css";
 
-import Head from "$components/Head/Head.astro";
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
 ---
 
 <html lang="en-GB">
-  <Head />
+  <Head title={title} description={description} />
   <body>
     <slot />
   </body>

@@ -1,0 +1,66 @@
+[
+  {
+    "id": "ext-1",
+    "title": "Driveway",
+    "category": "external",
+    "image": "../images/gallery/gallery-driveway-02.jpg",
+    "alt": "Finished driveway",
+    "order": 1
+  },
+  {
+    "id": "ext-2",
+    "title": "Garden room",
+    "image": "../images/gallery/gallery-garden-room-04.jpg",
+    "alt": "Garden room",
+    "category": "external",
+    "order": 2
+  },
+  {
+    "id": "ext-3",
+    "title": "Extension above garage",
+    "image": "../images/gallery/gallery-kingwilliam-01.jpg",
+    "alt": "Extension above garage",
+    "category": "external",
+    "order": 3
+  },
+  {
+    "id": "ext-4",
+    "title": "Single storey kitchen renovation",
+    "image": "../images/gallery/gould-after.jpg",
+    "alt": "Single storey kitchen renovation",
+    "category": "external",
+    "order": 4
+  },
+  {
+    "id": "ext-5",
+    "title": "Wrap around extension",
+    "image": "../images/gallery/gosling-after.jpg",
+    "alt": "Single storey kitchen renovation",
+    "category": "external",
+    "order": 5
+  },
+  {
+    "id": "ext-6",
+    "title": "Extension",
+    "image": "../images/gallery/smiles-after.jpg",
+    "alt": "Extension",
+    "category": "external",
+    "order": 5
+  },
+  {
+    "id": "ext-7",
+    "title": "House refurbishment",
+    "image": "../images/gallery/gallery-smiles-front-01.jpg",
+    "alt": "Extension",
+    "category": "external",
+    "order": 5
+  },  
+  {
+    "id": "int-1",
+    "title": "Bathroom",
+    "image": "../images/gallery/gallery-bathroom-04.jpg",
+    "alt": "Extension",
+    "category": "external",
+    "order": 5
+  }
+]

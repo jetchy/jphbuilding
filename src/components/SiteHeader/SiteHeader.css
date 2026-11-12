@@ -60,7 +60,8 @@
   transition: var(--transition-colors);
 }
 
-.site-nav__link:hover {
+.site-nav__link:hover,
+.site-nav__link[aria-current="page"] {
   color: var(--color-primary);
 }
 
@@ -130,6 +131,10 @@
 
 .mobile-menu__list li + li {
   border-top: var(--border-subtle);
+}
+
+.mobile-menu__link[aria-current="page"] {
+  color: var(--color-primary);
 }
 
 .mobile-menu__link {

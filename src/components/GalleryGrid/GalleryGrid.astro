@@ -1,0 +1,46 @@
+---
+import { getCollection } from "astro:content";
+import GalleryItem from "$components/GalleryItem/GalleryItem.astro";
+import "$components/GalleryGrid/GalleryGrid.css";
+
+const entries = await getCollection("gallery");
+
+// External first, then Internal; each sorted by `order`. Counts come from the data.
+const groups = [
+  { category: "external", label: "External" },
+  { category: "internal", label: "Internal" },
+].map((group) => ({
+  ...group,
+  items: entries
+    .map((entry) => entry.data)
+    .filter((item) => item.category === group.category)
+    .sort((a, b) => a.order - b.order),
+}));
+---
+
+<section class="gallery" id="gallery" aria-labelledby="gallery-title">
+  <h2 class="visually-hidden" id="gallery-title">Gallery</h2>
+  <div class="container gallery__groups">
+    {
+      groups.map((group) => (
+        <div class="gallery__group">
+          <h3 class="gallery__label">
+            {group.label}
+            <span class="gallery__count">({group.items.length})</span>
+          </h3>
+          {/* role="list" keeps list semantics when display: contents is applied. */}
+          <ul class="gallery__grid" role="list">
+            {group.items.map((item) => (
+              <GalleryItem
+                id={item.id}
+                title={item.title}
+                image={item.image}
+                alt={item.alt}
+              />
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</section>

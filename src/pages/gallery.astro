@@ -1,0 +1,19 @@
+---
+import Layout from "$layouts/Layout.astro";
+import Enquiry from "$components/Enquiry/Enquiry.astro";
+import GalleryGrid from "$components/GalleryGrid/GalleryGrid.astro";
+import PageHero from "$components/PageHero/PageHero.astro";
+---
+
+<Layout
+  title="Gallery | Completed Renovations | JPH Building"
+  description="See completed projects by JPH Building, a local Cheltenham builder. Extensions, barn conversions, kitchens, bathrooms, joinery and driveways across Gloucestershire."
+>
+  <PageHero
+    title="Completed Renovations"
+    subtitle="Quality work, built around you"
+    intro="Every project we complete is shaped by our clients’ requirements and finished to a high standard. We keep you informed and involved in key building decisions throughout, so you’re happy with the result."
+  />
+  <GalleryGrid />
+  <Enquiry />
+</Layout>

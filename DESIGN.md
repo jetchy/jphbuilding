@@ -176,4 +176,21 @@ The Google Stitch HTML export is the visual reference for the landing page. Wher
   - **Background:** a project photo blurred by 4px (`--showcase-blur`) under a 72% black overlay (`--color-overlay-photo`), with a muted surface colour as a fallback.
   - **Size:** minimum height 32rem; content up to 38rem wide.
   - **Text:** white mono "Portfolio Highlight" overline, white `h2` and body text. The body text grows from 16px to 18px at 40em.
-  - **Link:** an arrow link to `/completed-renovations` in the lighter orange `#F97316` (hover `#FDBA74`), tokenised as `--color-accent-on-dark` / `--color-accent-on-dark-hover`. The standard CTA orange is too dark to read on the overlay.
+  - **Link:** an arrow link to `/gallery` (the Completed Renovations page) in the lighter orange `#F97316` (hover `#FDBA74`), tokenised as `--color-accent-on-dark` / `--color-accent-on-dark-hover`. The standard CTA orange is too dark to read on the overlay.
+
+---
+
+## 9. Completed Renovations page (`/gallery`)
+
+- **Structure:** header → short page hero → gallery → contact form band → footer. The header nav gains `03/ Gallery`, marked current on this page.
+- **Page hero:** the same blueprint grid, ruler and heading treatment as the home hero, but shorter.
+  - Padding: 2.5rem, rising to 3rem at 64em.
+  - Text sizes: 2.625rem title (`--text-page-title`), 1.5rem subtitle, 1rem intro.
+- **Gallery:**
+  - **Below 48em:** two labelled groups, "External (n)" and "Internal (n)". Each label is a mono uppercase blue line followed by a rule at 35% opacity. Tiles are fixed 15.5rem squares (`--gallery-tile-size`), centred.
+  - **48em and up:** labels hidden; every tile flows into one 3-column grid of fluid square tiles, External first.
+  - **Tiles:** 0.125rem blueprint border on a muted surface, with a white mono title badge at the top left.
+  - **Tiles with a photo** link to the full-size image. On hover the border turns orange; the focus outline is an inset 0.125rem brand-blue line.
+  - **Placeholder tiles** (no photo yet) show only the badge and aren't links.
+- **Contact form band:** the existing form in a hero-style blueprint band, centred and capped at 40rem (`--enquiry-form-width`).
+

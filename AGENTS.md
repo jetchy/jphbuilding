@@ -10,19 +10,27 @@ Static website built with Astro. Follow Astro conventions for routing and compon
 - Images: `src/images`, rendered with Astro's `<Image />` from `astro:assets`
 - Icons: `src/components/Icons`, one inline-SVG component per icon (`ArrowRightIcon.astro`), all wrapping the shared `Icon.astro`. Don't use icon fonts or CDN icon libraries. To add an icon, copy an existing icon file and swap the paths. Icons are `1em` square and use `currentColor`, so size and colour them through the parent's `font-size` and `color`.
 
-### Single-page site
+### Pages and navigation
 
-The site is currently one landing page (`src/pages/index.astro`) built from section components. Navigation links point to section anchors (`#about`, `#expertise`, `#gallery`, `#testimonials`, `#consultation`), not to separate pages. When you add a section, give it the matching `id` and add it to `navItems` in `src/data/site.ts`.
+- **Pages:**
+  - `src/pages/index.astro`: the landing page, built from section components.
+  - `src/pages/gallery.astro`: the "Completed Renovations" gallery page, at `/gallery`.
+- **Nav links to landing-page sections are root-relative** (`/#about`, `/#expertise`, `/#testimonials`), so they work from every page. Don't write bare `#section` links in shared components.
+- **Exception:** `#consultation` stays a bare anchor, because every page has the contact form.
+- **When you add a landing-page section**, give it the matching `id` and add it to `navItems` in `src/data/site.ts`.
+- **When you add a page**, add its route to `navItems`. The header marks page links (not anchors) with `aria-current="page"` on their own page.
 
 - **Nav numbering:** the `01/`, `02/` … indexes in `navItems` must stay sequential. Renumber them whenever an item is added, removed or restored.
 - **Parked content:** these are deliberately hidden, not forgotten. Don't restore them unless asked.
-  - The "Why JPH" and "Gallery" nav and footer links are commented out in `src/data/site.ts`. "Why JPH" has no section yet. The `Showcase` section now carries `id="gallery"`, but the Gallery link stays hidden until it's re-enabled on request.
+  - The "Why JPH" nav and footer links are commented out in `src/data/site.ts`, because that section doesn't exist yet.
+  - The header's "Gallery" link goes to `/gallery`. The footer's Gallery link stays commented out, as the design leaves it out.
   - The `Craftsmanship` section (with `CraftsmanshipCards`) is built but not used on the page. Re-add `<Craftsmanship />` after `<Hero />` in `index.astro` to bring it back. Note that it carries `id="services"`.
 
 ### Component structure and naming
 
 - **One component per section:** `Hero`, `Craftsmanship`, `Expertise`, `Showcase`, `Testimonials`, `SiteHeader`, `UtilityBar`, `SiteFooter`.
 - **Page order** in `index.astro`: `Hero` → `Expertise` → `Showcase` ("Completed Renovations") → `Testimonials`.
+- **Page order** in `gallery.astro`: `PageHero` → `GalleryGrid` → `Enquiry`.
 - **Repeated or reusable parts are their own components**, named after what they are:
 
   | Component            | What it is                                                        |
@@ -35,6 +43,10 @@ The site is currently one landing page (`src/pages/index.astro`) built from sect
   | `TestimonialCards`   | Client quote card with name and location                            |
   | `SectionHeading`     | Overline, `h2`, orange rule and optional intro                      |
   | `ArrowLink`          | Uppercase text link with a trailing arrow; `variant="on-dark"` for dark/photo backgrounds |
+  | `PageHero`           | Shorter hero for internal pages (`title`, optional `subtitle`, `intro`, `id`) |
+  | `GalleryGrid`        | Gallery section: reads the `gallery` collection, groups External/Internal with live counts |
+  | `GalleryItem`        | One square gallery tile; links to the full-size photo, or a placeholder if there's no photo |
+  | `Enquiry`            | `ContactForm` in a hero-style band for the bottom of internal pages |
 
 - Each card component renders a single card; the section component lays out the grid.
 - Name new components after the part they represent, in PascalCase, and use a matching kebab-case BEM block for their CSS classes (`TestimonialCards` → `.testimonial-card`, `.testimonial-card__name`).
@@ -46,6 +58,13 @@ The site is currently one landing page (`src/pages/index.astro`) built from sect
   - They are verbatim excerpts from the current live site (jphbuilding.co.uk/testimonials/). Never reword, "tidy up" or invent a testimonial or client name.
   - Mark any skipped text with "…".
   - The `Testimonials` section shows them as a CSS marquee. Only entries marked `featured` appear there (5 at most, around 27 words each); the rest are kept for a future testimonials page. The list is rendered three times and slides left by one copy, and hovering a card pauses it. With reduced motion, the duplicate copy is hidden and the row becomes a manual horizontal scroll instead.
+- **Shared hero styles** (`.hero`, `.hero__ruler`, `.hero__headings`, `.hero__title`, `.hero__subtitle`, `.hero__intro`, `.hero__form`) live in `src/styles/hero.css`.
+  - They're shared because `Hero`, `PageHero` and `Enquiry` all use them, and each of those components imports the file.
+  - Home-page-only hero layout stays in `Hero.css`.
+- **Gallery** content is a content collection (`src/content.config.ts`).
+  - Entries live in `src/data/gallery.json`, and photos go in `src/images/gallery/`. Image paths in the JSON are relative to that file.
+  - To add a tile, add an entry. A photo is optional; entries without one show as a placeholder. No component changes are needed.
+  - Keep `data-gallery-item` on the tile links; it's the hook for a future lightbox.
 - Shared utilities live in `src/styles/global.css`: `.container`, `.blueprint-grid` (grid-paper background), `.technical-corner` (drafting corner brackets on blueprint cards) and `.visually-hidden`.
 - Write CSS mobile first: base styles target small screens, then add `min-width` media queries.
 
