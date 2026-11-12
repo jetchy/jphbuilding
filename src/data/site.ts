@@ -26,7 +26,7 @@ export const navItems: NavItem[] = [
   { index: "01", label: "About", href: "/#about" },
   // { index: "02", label: "Why JPH", href: "/#why-jph" },
   { index: "02", label: "Services", href: "/#expertise" },
-  { index: "03", label: "Gallery", href: "/completed-renovations" },
+  { index: "03", label: "Gallery", href: "/gallery" },
   { index: "04", label: "Testimonials", href: "/#testimonials" },
 ];
 
@@ -37,7 +37,7 @@ export const footerNavItems = [
   { label: "About Jason Heseltine", href: "/#about" },
   // { label: "Why JPH", href: "/#why-jph" },
   { label: "Services", href: "/#expertise" },
-  // { label: "Gallery", href: "/completed-renovations" },
+  // { label: "Gallery", href: "/gallery" },
   { label: "Testimonials", href: "/#testimonials" },
 ];
 

@@ -1,73 +1,66 @@
 [
   {
     "id": "ext-1",
-    "title": "Rear Extension",
+    "title": "Driveway",
     "category": "external",
-    "image": "../images/gallery/rear-extension.jpg",
-    "alt": "Bespoke modern rear extension in Cheltenham",
+    "image": "../images/gallery/gallery-driveway-02.jpg",
+    "alt": "Finished driveway",
     "order": 1
   },
   {
     "id": "ext-2",
-    "title": "Garage Extension",
+    "title": "Garden room",
+    "image": "../images/gallery/gallery-garden-room-04.jpg",
+    "alt": "Garden room",
     "category": "external",
     "order": 2
   },
   {
     "id": "ext-3",
-    "title": "Roof & Leadwork",
+    "title": "Extension above garage",
+    "image": "../images/gallery/gallery-kingwilliam-01.jpg",
+    "alt": "Extension above garage",
     "category": "external",
     "order": 3
   },
   {
     "id": "ext-4",
-    "title": "Resin Driveway",
+    "title": "Single storey kitchen renovation",
+    "image": "../images/gallery/gould-after.jpg",
+    "alt": "Single storey kitchen renovation",
     "category": "external",
     "order": 4
   },
   {
     "id": "ext-5",
-    "title": "Barn Conversion",
+    "title": "Wrap around extension",
+    "image": "../images/gallery/gosling-after.jpg",
+    "alt": "Single storey kitchen renovation",
     "category": "external",
     "order": 5
   },
   {
     "id": "ext-6",
-    "title": "Block Paving",
+    "title": "Extension",
+    "image": "../images/gallery/smiles-after.jpg",
+    "alt": "Extension",
     "category": "external",
-    "order": 6
-  },
-  {
-    "id": "int-1",
-    "title": "Bespoke Joinery",
-    "category": "internal",
-    "image": "../images/gallery/bespoke-joinery.jpg",
-    "alt": "Carpenter measuring timber in the joinery workshop",
-    "order": 1
-  },
-  {
-    "id": "int-2",
-    "title": "Kitchen Refit",
-    "category": "internal",
-    "order": 2
-  },
-  {
-    "id": "int-3",
-    "title": "Bathroom Refit",
-    "category": "internal",
-    "order": 3
-  },
-  {
-    "id": "int-4",
-    "title": "Loft Conversion",
-    "category": "internal",
-    "order": 4
-  },
-  {
-    "id": "int-5",
-    "title": "Structural Alterations",
-    "category": "internal",
     "order": 5
   },
-  { "id": "int-6", "title": "Staircase", "category": "internal", "order": 6 }
+  {
+    "id": "ext-7",
+    "title": "House refurbishment",
+    "image": "../images/gallery/gallery-smiles-front-01.jpg",
+    "alt": "Extension",
+    "category": "external",
+    "order": 5
+  },  
+  {
+    "id": "int-1",
+    "title": "Bathroom",
+    "image": "../images/gallery/gallery-bathroom-04.jpg",
+    "alt": "Extension",
+    "category": "external",
+    "order": 5
+  }
 ]

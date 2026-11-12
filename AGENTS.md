@@ -14,7 +14,7 @@ Static website built with Astro. Follow Astro conventions for routing and compon
 
 - **Pages:**
   - `src/pages/index.astro`: the landing page, built from section components.
-  - `src/pages/completed-renovations.astro`: the gallery page.
+  - `src/pages/gallery.astro`: the "Completed Renovations" gallery page, at `/gallery`.
 - **Nav links to landing-page sections are root-relative** (`/#about`, `/#expertise`, `/#testimonials`), so they work from every page. Don't write bare `#section` links in shared components.
 - **Exception:** `#consultation` stays a bare anchor, because every page has the contact form.
 - **When you add a landing-page section**, give it the matching `id` and add it to `navItems` in `src/data/site.ts`.
@@ -23,14 +23,14 @@ Static website built with Astro. Follow Astro conventions for routing and compon
 - **Nav numbering:** the `01/`, `02/` … indexes in `navItems` must stay sequential. Renumber them whenever an item is added, removed or restored.
 - **Parked content:** these are deliberately hidden, not forgotten. Don't restore them unless asked.
   - The "Why JPH" nav and footer links are commented out in `src/data/site.ts`, because that section doesn't exist yet.
-  - The header's "Gallery" link goes to `/completed-renovations`. The footer's Gallery link stays commented out, as the design leaves it out.
+  - The header's "Gallery" link goes to `/gallery`. The footer's Gallery link stays commented out, as the design leaves it out.
   - The `Craftsmanship` section (with `CraftsmanshipCards`) is built but not used on the page. Re-add `<Craftsmanship />` after `<Hero />` in `index.astro` to bring it back. Note that it carries `id="services"`.
 
 ### Component structure and naming
 
 - **One component per section:** `Hero`, `Craftsmanship`, `Expertise`, `Showcase`, `Testimonials`, `SiteHeader`, `UtilityBar`, `SiteFooter`.
 - **Page order** in `index.astro`: `Hero` → `Expertise` → `Showcase` ("Completed Renovations") → `Testimonials`.
-- **Page order** in `completed-renovations.astro`: `PageHero` → `GalleryGrid` → `Enquiry`.
+- **Page order** in `gallery.astro`: `PageHero` → `GalleryGrid` → `Enquiry`.
 - **Repeated or reusable parts are their own components**, named after what they are:
 
   | Component            | What it is                                                        |
