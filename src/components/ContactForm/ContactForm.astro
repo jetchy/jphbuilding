@@ -1,5 +1,12 @@
 ---
 import { contact } from "$data/site";
+import {
+  fieldMessages,
+  honeypotField,
+  maxLengths,
+  phonePattern,
+  projectTypes,
+} from "$data/enquiry";
 import Alert from "$components/Alert/Alert.astro";
 import ArrowRightIcon from "$components/Icons/ArrowRightIcon.astro";
 import MailIcon from "$components/Icons/MailIcon.astro";
@@ -13,15 +20,6 @@ interface Props {
 }
 
 const { id = "consultation" } = Astro.props;
-
-const projectTypes = [
-  { value: "extensions", label: "Bespoke House Extension" },
-  { value: "roofing", label: "Roofing & Leadwork Repair/New" },
-  { value: "carpentry", label: "Carpentry & Structural Joinery" },
-  { value: "kitchen-bath", label: "Kitchen or Bathroom Overhaul" },
-  { value: "driveway", label: "Driveway & Groundworks" },
-  { value: "commercial", label: "Commercial / Full Renovation" },
-];
 ---
 
 <div class="contact-form technical-corner" id={id}>
@@ -36,7 +34,10 @@ const projectTypes = [
       </p>
     </div>
 
-    <form class="contact-form__form">
+    <!-- Sent with JavaScript via the sendEnquiry action (see the script
+         below). novalidate is added by the script so its own messages replace
+         the browser's pop-ups. -->
+    <form class="contact-form__form" data-enquiry-form>
       <div class="contact-form__field">
         <label class="contact-form__label" for="full-name">Full Name *</label>
         <div class="contact-form__input-wrap">
@@ -48,9 +49,13 @@ const projectTypes = [
             type="text"
             placeholder="e.g. David Morrison"
             autocomplete="name"
+            maxlength={maxLengths.name}
             required
           />
         </div>
+        <p class="contact-form__error" id="full-name-error" hidden>
+          {fieldMessages.name}
+        </p>
       </div>
 
       <div class="contact-form__row">
@@ -67,14 +72,18 @@ const projectTypes = [
               type="tel"
               placeholder="07951..."
               autocomplete="tel"
+              pattern={phonePattern}
               required
             />
           </div>
+          <p class="contact-form__error" id="phone-number-error" hidden>
+            {fieldMessages.phone}
+          </p>
         </div>
 
         <div class="contact-form__field">
           <label class="contact-form__label" for="email-address">
-            Email Address
+            Email Address *
           </label>
           <div class="contact-form__input-wrap">
             <MailIcon class="contact-form__input-icon" />
@@ -85,8 +94,13 @@ const projectTypes = [
               type="email"
               placeholder="name@domain.com"
               autocomplete="email"
+              maxlength={maxLengths.email}
+              required
             />
           </div>
+          <p class="contact-form__error" id="email-address-error" hidden>
+            {fieldMessages.email}
+          </p>
         </div>
       </div>
 
@@ -97,7 +111,7 @@ const projectTypes = [
         <select
           class="contact-form__input"
           id="project-type"
-          name="project-type"
+          name="projectType"
           required
         >
           <option value="">Select building project...</option>
@@ -107,11 +121,14 @@ const projectTypes = [
             ))
           }
         </select>
+        <p class="contact-form__error" id="project-type-error" hidden>
+          {fieldMessages.projectType}
+        </p>
       </div>
 
       <div class="contact-form__field">
         <label class="contact-form__label" for="project-overview">
-          Project Overview / Location
+          Project Overview / Location *
         </label>
         <textarea
           class="contact-form__input contact-form__textarea"
@@ -119,13 +136,39 @@ const projectTypes = [
           name="overview"
           rows="3"
           placeholder="Brief details about property, postcode, planning status..."
-        ></textarea>
+          maxlength={maxLengths.overview}
+          required></textarea>
+        <p class="contact-form__error" id="project-overview-error" hidden>
+          {fieldMessages.overview}
+        </p>
+      </div>
+
+      <!-- Spam trap: hidden from people and screen readers; bots tend to fill it. -->
+      <div class="visually-hidden" aria-hidden="true">
+        <label for="enquiry-company">Company</label>
+        <input
+          id="enquiry-company"
+          name={honeypotField}
+          type="text"
+          tabindex="-1"
+          autocomplete="off"
+        />
       </div>
 
       <button class="contact-form__submit" type="submit">
-        Send Free Enquiry
+        <span data-submit-label>Send Free Enquiry</span>
         <ArrowRightIcon />
       </button>
+
+      <!-- Success / failure message, announced to screen readers. -->
+      <p class="contact-form__status" role="status" data-enquiry-status></p>
+
+      <noscript>
+        <p class="contact-form__status contact-form__status--error">
+          This form needs JavaScript to send. Please call
+          {contact.phoneDisplay} or email {contact.email} instead.
+        </p>
+      </noscript>
 
     <Alert variant="compact">
       <PhoneCallIcon slot="icon" />
@@ -138,3 +181,138 @@ const projectTypes = [
     </form>
   </div>
 </div>
+
+<script>
+  import { actions, isInputError } from "astro:actions";
+  import { contact } from "$data/site";
+
+  type Field = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+
+  const SENDING_LABEL = "Sending…";
+  const SUCCESS_MESSAGE =
+    "Thank you, your enquiry has been sent. We'll be in touch soon.";
+  const FAILURE_MESSAGE = `Sorry, your enquiry couldn't be sent. Please try again or call ${contact.phoneDisplay}.`;
+
+  for (const form of document.querySelectorAll<HTMLFormElement>(
+    "[data-enquiry-form]",
+  )) {
+    const status = form.querySelector<HTMLElement>("[data-enquiry-status]");
+    const submit = form.querySelector<HTMLButtonElement>(
+      'button[type="submit"]',
+    );
+    const submitLabel = form.querySelector<HTMLElement>("[data-submit-label]");
+    if (!status || !submit || !submitLabel) continue;
+
+    const defaultLabel = submitLabel.textContent ?? "";
+    const fields = [
+      ...form.querySelectorAll<Field>(
+        "input[required], select[required], textarea[required]",
+      ),
+    ];
+
+    // Our messages replace the browser's validation pop-ups.
+    form.noValidate = true;
+
+    const errorFor = (field: Field) =>
+      document.getElementById(`${field.id}-error`);
+
+    // Remember each field's default message so a server message can be undone.
+    for (const field of fields) {
+      const error = errorFor(field);
+      if (error) error.dataset.defaultMessage = error.textContent?.trim();
+    }
+
+    const setFieldError = (field: Field, message?: string) => {
+      const error = errorFor(field);
+      if (!error) return;
+
+      if (message) {
+        error.textContent = message;
+        error.hidden = false;
+        field.setAttribute("aria-invalid", "true");
+        field.setAttribute("aria-describedby", error.id);
+      } else {
+        error.hidden = true;
+        field.removeAttribute("aria-invalid");
+        field.removeAttribute("aria-describedby");
+      }
+    };
+
+    const checkField = (field: Field) =>
+      setFieldError(
+        field,
+        field.validity.valid ? undefined : errorFor(field)?.dataset.defaultMessage,
+      );
+
+    const showStatus = (state: "success" | "error", message: string) => {
+      status.dataset.state = state;
+      status.textContent = message;
+    };
+
+    const clearStatus = () => {
+      delete status.dataset.state;
+      status.textContent = "";
+    };
+
+    // Validation only kicks in after the first submit attempt, then updates
+    // live as people correct each field.
+    form.addEventListener("input", (event) => {
+      if (form.dataset.submitted && fields.includes(event.target as Field)) {
+        checkField(event.target as Field);
+      }
+    });
+    form.addEventListener("change", (event) => {
+      if (form.dataset.submitted && fields.includes(event.target as Field)) {
+        checkField(event.target as Field);
+      }
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      form.dataset.submitted = "true";
+      clearStatus();
+
+      fields.forEach(checkField);
+      const firstInvalid = fields.find((field) => !field.validity.valid);
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return;
+      }
+
+      submit.disabled = true;
+      submit.setAttribute("aria-busy", "true");
+      submitLabel.textContent = SENDING_LABEL;
+
+      try {
+        const { error } = await actions.sendEnquiry(new FormData(form));
+
+        if (!error) {
+          form.reset();
+          delete form.dataset.submitted;
+          fields.forEach((field) => setFieldError(field));
+          showStatus("success", SUCCESS_MESSAGE);
+          return;
+        }
+
+        if (isInputError(error)) {
+          // The server disagreed with the browser: show its messages.
+          const invalid = fields.filter((field) => {
+            const message = error.fields[field.name as keyof typeof error.fields]?.[0];
+            if (message) setFieldError(field, message);
+            return Boolean(message);
+          });
+          invalid[0]?.focus();
+          return;
+        }
+
+        showStatus("error", FAILURE_MESSAGE);
+      } catch {
+        showStatus("error", FAILURE_MESSAGE);
+      } finally {
+        submit.disabled = false;
+        submit.removeAttribute("aria-busy");
+        submitLabel.textContent = defaultLabel;
+      }
+    });
+  }
+</script>

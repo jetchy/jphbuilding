@@ -37,7 +37,7 @@ Static website built with Astro. Follow Astro conventions for routing and compon
   | -------------------- | ----------------------------------------------------------------- |
   | `Lozenges`           | Small guarantee badge in the hero (icon, mono title, short text)   |
   | `Alert`              | Blue-wash notice: `variant="banner"` (hero) or `"compact"` (form phone line) |
-  | `ContactForm`        | Consultation enquiry form (anchor `#consultation`)                  |
+  | `ContactForm`        | Consultation enquiry form (anchor `#consultation`); sends via the `sendEnquiry` action |
   | `CraftsmanshipCards` | Photo card with badge, title, text and arrow link                   |
   | `ExpertiseCards`     | Trade card with icon box, title and text                            |
   | `TestimonialCards`   | Client quote card with name and location                            |
@@ -65,6 +65,14 @@ Static website built with Astro. Follow Astro conventions for routing and compon
   - Entries live in `src/data/gallery.json`, and photos go in `src/images/gallery/`. Image paths in the JSON are relative to that file.
   - To add a tile, add an entry. A photo is optional; entries without one show as a placeholder. No component changes are needed.
   - Keep `data-gallery-item` on the tile links; it's the hook for a future lightbox.
+- **Contact form** (`ContactForm` + `src/actions/index.ts`):
+  - The form is sent by a client script that calls the `sendEnquiry` Astro Action. It's the only server-side code, and it runs as a Netlify Function; pages stay prerendered.
+  - The form doesn't work without JavaScript, by decision; a `<noscript>` message tells people to phone or email instead.
+  - Every field is required. The project types, phone pattern, length limits and error messages live in `src/data/enquiry.ts`, shared by the markup, the client script and the server schema. Change them there.
+  - **Validation:** only shown after the first submit attempt, then live as people type. Invalid fields get `aria-invalid="true"`, a red border (`--border-input-error`), and a message below linked with `aria-describedby`. Never rely on colour alone.
+  - **Spam:** a hidden honeypot field (`company`). If it's filled in, the action reports success but sends nothing.
+  - **Results:** shown in the form's `role="status"` area. There's no customer confirmation email.
+  - **Nothing is stored:** no database, no Netlify Forms, and Astro sessions are disabled (`session: false`). Never log enquiry contents; log failures only.
 - Shared utilities live in `src/styles/global.css`: `.container`, `.blueprint-grid` (grid-paper background), `.technical-corner` (drafting corner brackets on blueprint cards) and `.visually-hidden`.
 - Write CSS mobile first: base styles target small screens, then add `min-width` media queries.
 
@@ -153,6 +161,18 @@ Put styles in a separate CSS file in the same directory as the page or component
   - Give photography meaningful `alt` text.
   - White on orange is about 3.6:1 contrast, so keep CTA text bold and uppercase as specified. Never put orange text on white for body-size copy.
 - **Stay on-brand.** Don't add colours, fonts, gradients, rounded corners or decorative effects that `DESIGN.md` doesn't call for. Ask first.
+
+## Secrets and environment variables
+
+- **Never commit API keys, secrets or personal email addresses.** That includes `.env` files, test fixtures and comments.
+- **Declare every secret in the `env.schema` of `astro.config.mjs`** with `envField.string({ context: "server", access: "secret" })`, and import it from `astro:env/server`.
+  - These are read at request time, never inlined into the build, and never sent to the browser.
+  - Never read secrets with `import.meta.env` or `process.env` in components.
+- **Current variables:** `BREVO_API_KEY`, `ENQUIRY_TO_EMAIL` (comma-separated recipients) and `ENQUIRY_FROM_EMAIL` (a verified Brevo sender).
+  - They're marked `optional` so the site runs locally without them; the action checks they're set and fails cleanly if not.
+- **Production:** set them in Netlify (Site configuration → Environment variables), scoped to Functions and marked secret. Use a test recipient for deploy previews.
+- **Local development:** copy `.env.example` to `.env`; `.gitignore` excludes it. When you add a variable, add its name, but never its value, to `.env.example`.
+- **`src/actions/`** follows Astro's convention, and its code is reached through `astro:actions`, so it has no `$` alias.
 
 ## Git and deployment
 

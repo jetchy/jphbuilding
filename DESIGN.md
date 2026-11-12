@@ -194,3 +194,15 @@ The Google Stitch HTML export is the visual reference for the landing page. Wher
   - **Placeholder tiles** (no photo yet) show only the badge and aren't links.
 - **Contact form band:** the existing form in a hero-style blueprint band, centred and capped at 40rem (`--enquiry-form-width`).
 
+---
+
+## 10. Contact form states
+
+- **Required fields:** all five fields are required; labels end with `*`.
+- **Validation:** messages appear only after the first submit attempt, then update as the visitor types.
+  - **Invalid field:** a 1px border in error red `#DC2626` (`--color-error`, 4.8:1 on white, which passes WCAG AA).
+  - **Message:** shown below the field in 0.75rem (12px, `--text-field-message`) medium-weight error red.
+- **While sending:** the button reads "Sending…" and is dimmed (`--opacity-disabled`).
+- **Success:** a blue-wash box with a tinted border (the same treatment as the phone callout), reading "Thank you, your enquiry has been sent…". The form is cleared.
+- **Failure:** a box with an error-red border and text, giving the phone number. The visitor's entries are kept so they can try again.
+

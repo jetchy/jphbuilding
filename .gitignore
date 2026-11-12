@@ -13,12 +13,19 @@ yarn-error.log*
 pnpm-debug.log*
 
 
-# environment variables
+# environment variables (secrets live in Netlify, never in the repo)
 .env
-.env.production
+.env.*
+!.env.example
+
+# Netlify CLI local state
+.netlify/
 
 # macOS-specific files
 .DS_Store
 
 # jetbrains setting folder
 .idea/
+
+# Local Netlify folder
+.netlify

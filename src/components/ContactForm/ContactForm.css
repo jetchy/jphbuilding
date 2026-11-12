@@ -130,6 +130,18 @@
   resize: none;
 }
 
+/* Invalid fields (set by the script after the first submit attempt). */
+.contact-form__input[aria-invalid="true"] {
+  border: var(--border-input-error);
+}
+
+.contact-form__error {
+  margin: var(--space-1) 0 0;
+  color: var(--color-error);
+  font-size: var(--text-field-message);
+  font-weight: var(--font-weight-medium);
+}
+
 .contact-form__submit {
   display: flex;
   align-items: center;
@@ -152,6 +164,35 @@
 .contact-form__submit:hover {
   border-color: var(--color-accent-hover);
   background-color: var(--color-accent-hover);
+}
+
+.contact-form__submit:disabled {
+  cursor: progress;
+  opacity: var(--opacity-disabled);
+}
+
+/* Empty (zero height) until the script sets a state, but always in the
+   accessibility tree so screen readers announce the message. */
+.contact-form__status {
+  margin: 0;
+  font-size: var(--text-sm);
+}
+
+.contact-form__status[data-state] {
+  padding: var(--space-3);
+}
+
+.contact-form__status[data-state="success"] {
+  border: var(--border-width-hairline) solid var(--color-border-tint-strong);
+  background-color: var(--color-surface-callout);
+  color: var(--color-text-heading);
+}
+
+.contact-form__status[data-state="error"],
+.contact-form__status--error {
+  padding: var(--space-3);
+  border: var(--border-input-error);
+  color: var(--color-error);
 }
 
 @media (min-width: 40em) {
